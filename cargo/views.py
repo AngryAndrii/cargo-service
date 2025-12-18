@@ -20,8 +20,7 @@ class TruckListView(generic.ListView):
 
 class OrderListView(generic.ListView):
     model = Order
-    context_object_name = "order_list"
+
 
 class ServicesListView(generic.ListView):
     model = Service
-    context_object_name = "service_list"

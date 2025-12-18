@@ -1,4 +1,17 @@
-<ul class="list-group">
+<ul class="sidebar-nav list-group">
+  {% if user.is_authenticated %}
+{#    <li class="list-group-item list-group-item-info">User: <a#}
+{#        href="{% url "taxi:driver-detail" pk=user.id %}">{{ user.get_username }}</a></li>#}
+    <li>{{ user.get_username }}</li>
+    <li class="list-group-item list-group-item-danger">
+      <form id="logout-form" method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-link">Logout</button>
+      </form>
+    </li>
+  {% else %}
+    <li class="list-group-item list-group-item-info"><a href="{% url 'login' %}?next={{ request.path }}">Login</a></li>
+  {% endif %}
   <li class="list-group-item"><a href="{% url 'cargo:index' %}">Home</a></li>
   <li class="list-group-item"><a href="{% url 'cargo:truck-list' %}">Truck list</a></li>
   <li class="list-group-item"><a href="{% url 'cargo:order-list' %}">Orders list</a></li>
