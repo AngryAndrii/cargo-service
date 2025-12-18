@@ -1,0 +1,19 @@
+[flake8]
+# Increase line length to match modern standards (e.g., Black defaults)
+max-line-length = 88
+
+# Exclude directories that shouldn't be linted
+exclude =
+    .git,
+    __pycache__,
+    migrations,
+    venv,
+    env,
+    .env
+    core/settings.py
+
+# Ignore specific error codes (e.g., E203 for Black compatibility)
+extend-ignore = E203, W503
+
+# Select specific rules if using plugins
+select = B,C,E,F,W,T4,B9,DJ
