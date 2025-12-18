@@ -15,6 +15,9 @@ class Driver(AbstractUser):
                                  related_name="driver"
                                  )
 
+    class Meta:
+        ordering = ["username"]
+
 
 class Truck(models.Model):
     plate_number = models.CharField(max_length=8, unique=True)
@@ -31,11 +34,17 @@ class Truck(models.Model):
     condition = models.PositiveIntegerField(blank=False, null=False)
     image = models.CharField(max_length=255, null=True)
 
+    class Meta:
+        ordering = ["-tonnage"]
+
 
 class Manufacturer(models.Model):
     name = models.CharField(max_length=255, unique=True)
     country = models.CharField(max_length=65)
     image = models.CharField(max_length=255, null=True)
+
+    class Meta:
+        ordering = ["name"]
 
 
 class Order(models.Model):
@@ -61,6 +70,9 @@ class Order(models.Model):
                                on_delete=models.SET_NULL,
                                related_name="orders")
 
+    class Meta:
+        ordering = ["-created_at"]
+
 
 class Service(models.Model):
     name = models.CharField(max_length=65)
@@ -70,3 +82,6 @@ class Service(models.Model):
     truck = models.ForeignKey(Truck,
                               on_delete=models.CASCADE,
                               related_name="services")
+
+    class Meta:
+        ordering = ["-date"]
