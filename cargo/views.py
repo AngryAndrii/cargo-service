@@ -4,7 +4,7 @@ import datetime
 from django.shortcuts import render
 from django.views import generic
 
-from cargo.models import Truck, Order
+from cargo.models import Truck, Order, Service
 
 
 def index(request):
@@ -21,3 +21,7 @@ class TruckListView(generic.ListView):
 class OrderListView(generic.ListView):
     model = Order
     context_object_name = "order_list"
+
+class ServicesListView(generic.ListView):
+    model = Service
+    context_object_name = "service_list"
