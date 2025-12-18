@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>Order list</title>
+{% endblock %}
+
+{% block content %}
+  <h1>Orders</h1>
+  <ul>
+    {% for el in order_list %}
+      <li>name: {{ el.name }} description: {{ el.description }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
