@@ -21,6 +21,7 @@ class Truck(models.Model):
     model = models.CharField(max_length=255)
     tonnage = models.PositiveIntegerField()
     manufacturer = models.ForeignKey("Manufacturer",
+                                     null=True,
                                      on_delete=models.SET_NULL,
                                      related_name="trucks")
     cost_for_rent = models.DecimalField(max_digits=7,
@@ -28,13 +29,13 @@ class Truck(models.Model):
                                         blank=False,
                                         null=False)
     condition = models.PositiveIntegerField(blank=False, null=False)
-    image = models.ImageField(blank=True, null=True)
+    image = models.CharField(max_length=255, null=True)
 
 
 class Manufacturer(models.Model):
     name = models.CharField(max_length=255, unique=True)
     country = models.CharField(max_length=65)
-    image = models.ImageField(blank=True, null=True)
+    image = models.CharField(max_length=255, null=True)
 
 
 class Order(models.Model):
@@ -52,7 +53,7 @@ class Order(models.Model):
     )
     payment = models.DecimalField(max_digits=7, decimal_places=2)
     created_at = models.DateTimeField(auto_now_add=True)
-    planned_at = models.DateTimeField(),
+    planned_at = models.DateTimeField()
     finished_at = models.DateTimeField()
     driver = models.ForeignKey(Driver,
                                null=True,
