@@ -3,5 +3,12 @@
 
 {% block content %}
   <h1>Truck list</h1>
-  Trucks list content
+  <ul class="list-group">
+    {% for truck in truck_list %}
+      <li class="list-group-item">{{ truck.manufacturer.name }} {{ truck.model }} {{ truck.tonnage }} </li>
+
+    {% endfor %}
+  </ul>
+
+
 {% endblock %}
