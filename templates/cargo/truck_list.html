@@ -5,8 +5,14 @@
   <h1>Truck list</h1>
   <ul class="list-group">
     {% for truck in truck_list %}
-      <li class="list-group-item">{{ truck.manufacturer.name }} {{ truck.model }} {{ truck.tonnage }} </li>
-
+      <li class="list-group-item">{{ truck.manufacturer.name }} {{ truck.model }} {{ truck.tonnage }} | rent cost: <b>{{ truck.cost_for_rent }}</b>
+        <form method="post" action="{% url 'cargo:rent-truck' pk=truck.id %}">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-success">
+            Rent truck
+          </button>
+        </form>
+      </li>
     {% endfor %}
   </ul>
 
