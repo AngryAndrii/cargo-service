@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    {{ order.name }}
+  </h1>
+  <h1>
+     weight: {{ order.weight }} kg.
+  </h1>
+  <h3>{{ order.get_status_display }}</h3>
+  <p>{{ order.description }}</p>
+  <hr>
+{% endblock %}

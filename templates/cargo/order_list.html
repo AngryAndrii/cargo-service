@@ -3,8 +3,8 @@
 {% block content %}
   <h1>Orders</h1>
   <ul>
-    {% for el in order_list %}
-      <li>name: {{ el.name }} description: {{ el.description }}</li>
+    {% for order in order_list %}
+      <li><a href="{% url "cargo:order-detail" pk=order.id %} ">name: {{ order.name }} description: {{ order.description }}</a></li>
     {% endfor %}
   </ul>
 {% endblock %}

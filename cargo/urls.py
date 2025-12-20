@@ -1,7 +1,8 @@
 from django.urls import path
 
 from cargo.services.helpers import rent_truck
-from cargo.views import index, TruckListView, OrderListView, ServicesListView
+from cargo.views import index, TruckListView, OrderListView, ServicesListView, \
+    OrderDetailView
 
 urlpatterns = [
     path("", index, name="index"),
@@ -13,7 +14,9 @@ urlpatterns = [
         rent_truck,
         name="rent-truck",
     ),
-
+    path("orders/<int:pk>/",
+         OrderDetailView.as_view(),
+         name="order-detail")
 ]
 
 app_name = "cargo"

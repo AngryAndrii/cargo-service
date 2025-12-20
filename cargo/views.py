@@ -20,5 +20,9 @@ class OrderListView(generic.ListView):
     model = Order
 
 
+class OrderDetailView(generic.DetailView):
+    model = Order
+
+
 class ServicesListView(generic.ListView):
     model = Service
