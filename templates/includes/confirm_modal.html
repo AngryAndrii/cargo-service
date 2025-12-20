@@ -1,0 +1,51 @@
+<div class="modal fade"
+     id="{{ modal_id }}"
+     tabindex="-1"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">{{ title }}</h5>
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        <p>{{ body }}</p>
+      </div>
+
+      <div class="modal-footer">
+        <form
+            hx-post="{{ action_url }}"
+            hx-target="body"
+            hx-swap="outerHTML">
+          {% csrf_token %}
+          <button type="submit"
+                  class="btn btn-success">
+            {{ confirm_text }}
+          </button>
+          <button type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal">
+            Cancel
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+<script>
+    (function () {
+        const modalEl = document.querySelector('#modals-here .modal');
+        if (!modalEl) return;
+
+        const existing = document.querySelector('#modals-here .modal.show');
+        if (existing) existing.remove();
+
+        const bsModal = new bootstrap.Modal(modalEl);
+        bsModal.show();
+    })();
+</script>

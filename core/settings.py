@@ -1,6 +1,8 @@
 import os
 from pathlib import Path
 
+from django.contrib.messages import constants as messages
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -98,3 +100,7 @@ INTERNAL_IPS = [
 AUTH_USER_MODEL = "cargo.Driver"
 
 LOGIN_REDIRECT_URL = '/'
+
+MESSAGE_TAGS = {
+    messages.ERROR: "danger",
+}

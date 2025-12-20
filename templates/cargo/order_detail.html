@@ -5,9 +5,32 @@
     {{ order.name }}
   </h1>
   <h1>
-     weight: {{ order.weight }} kg.
+    weight: {{ order.weight }} kg.
   </h1>
   <h3>{{ order.get_status_display }}</h3>
   <p>{{ order.description }}</p>
-  <hr>
+
+  {% if order.status == "IP" and order.driver_id == user.id %}
+    <button hx-get="{% url 'cargo:complete-order-modal' order.id %}"
+            hx-target="#modals-here"
+            hx-swap="innerHTML"
+            hx-trigger="click"
+            class="btn btn-primary"> Complete the order
+    </button>
+
+  {% elif order.status == "IP" or order.status == "CO" and order.driver_id == user.id %}
+    <button
+        class="btn btn-primary" disabled> Take Order
+    </button>
+  {% else %}
+    <button hx-get="{% url 'cargo:take-order-modal' order.id %}"
+            hx-target="#modals-here"
+            hx-swap="innerHTML"
+            hx-trigger="click"
+            class="btn btn-primary"> Take Order
+    </button>
+  {% endif %}
+
+
+  <div id="modals-here"></div>
 {% endblock %}

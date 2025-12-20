@@ -1,6 +1,7 @@
 from django.urls import path
 
-from cargo.services.helpers import rent_truck
+from cargo.services.helpers import rent_truck, take_order_modal, take_order, \
+    complete_order_modal, complete_order
 from cargo.views import index, TruckListView, OrderListView, ServicesListView, \
     OrderDetailView
 
@@ -16,7 +17,27 @@ urlpatterns = [
     ),
     path("orders/<int:pk>/",
          OrderDetailView.as_view(),
-         name="order-detail")
+         name="order-detail"),
+    path(
+        "orders/<int:pk>/take/modal/",
+        take_order_modal,
+        name="take-order-modal",
+    ),
+    path(
+        "orders/<int:pk>/take/",
+        take_order,
+        name="take-order",
+    ),
+    path(
+        "orders/<int:pk>/complete/modal/",
+        complete_order_modal,
+        name="complete-order-modal",
+    ),
+    path(
+        "orders/<int:pk>/complete/",
+        complete_order,
+        name="complete-order",
+    ),
 ]
 
 app_name = "cargo"
