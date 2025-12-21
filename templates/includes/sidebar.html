@@ -1,11 +1,21 @@
 <ul class="sidebar-nav list-group">
   {% if user.is_authenticated %}
-    {#    <li class="list-group-item list-group-item-info">User: <a#}
-    {#        href="{% url "taxi:driver-detail" pk=user.id %}">{{ user.get_username }}</a></li>#}
     <li>{{ user.get_username }}</li>
     <li>money: {{ user.money }}</li>
     {% if user.truck %}
-      <li>{{ user.truck.manufacturer.name }} {{ user.truck.model }} {{ user.truck.tonnage }}</li>
+      <li>{{ user.truck.manufacturer.name }} {{ user.truck.model }} {{ user.truck.tonnage }}
+
+        <button
+            hx-get="{% url 'cargo:return-truck-modal' pk=user.truck.id %}"
+            hx-target="#modals-here"
+            hx-trigger="click"
+            hx-swap="innerHTML"
+            class="btn btn-warning"
+        >
+          Return truck
+        </button>
+
+      </li>
     {% endif %}
     <li class="list-group-item list-group-item-danger">
       <form id="logout-form" method="post" action="{% url 'logout' %}">

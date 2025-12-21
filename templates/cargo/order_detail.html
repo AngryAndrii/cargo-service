@@ -13,7 +13,7 @@
   {% if order.status == "IP" and order.driver_id == user.id %}
     <button hx-get="{% url 'cargo:complete-order-modal' order.id %}"
             hx-target="#modals-here"
-            hx-swap="innerHTML"
+
             hx-trigger="click"
             class="btn btn-primary"> Complete the order
     </button>

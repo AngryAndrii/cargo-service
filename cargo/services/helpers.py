@@ -38,6 +38,39 @@ def rent_truck(request, pk):
     return redirect("cargo:truck-list")
 
 
+def return_truck_modal(request, pk):
+    truck = get_object_or_404(Truck, pk=pk)
+
+    return render(
+        request,
+        "includes/confirm_modal.html",
+        {
+            "modal_id": "return-truck-modal",
+            "title": "Return truck",
+            "body": f"Are you sure you want to return truck '{truck.plate_number}'?",
+            "confirm_text": "Return truck",
+            "action_url": reverse("cargo:return-truck", args=[pk]),
+        },
+    )
+
+@require_POST
+def return_truck(request, pk):
+    truck = get_object_or_404(Truck, pk=pk)
+    driver: Driver = request.user
+
+    if driver.truck != truck:
+        messages.error(request, "This truck is not assigned to you.")
+        return redirect("cargo:truck-detail", pk=pk)
+
+    driver.truck = None
+    driver.save()
+
+    messages.success(request, "Truck has been successfully returned.")
+
+    return HttpResponse('<script>window.location.reload()</script>')
+
+
+
 def take_order_modal(request, pk):
     order = get_object_or_404(Order, pk=pk)
 
@@ -60,12 +93,8 @@ def take_order(request, pk):
 
     driver: Driver = request.user
 
-    if order.status == "IP":
-        messages.error(request, "This order is already being fulfilled!")
-        return redirect("cargo:order-detail", pk=pk)
-
-    if order.status == "CO":
-        messages.error(request, "this order has already been fulfilled!")
+    if order.status != Order.Status.AVAILABLE:
+        messages.error(request, "Order is not available.")
         return redirect("cargo:order-detail", pk=pk)
 
     if driver.truck.tonnage < order.weight:
