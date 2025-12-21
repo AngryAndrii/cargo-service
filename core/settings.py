@@ -10,7 +10,7 @@ SECRET_KEY = "django-insecure-4fx5u&v+k&fd(e70+m(qe(#=x#q6vvyll#3$g@9#4d)o674h4g
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
 
 INSTALLED_APPS = [
@@ -19,6 +19,7 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
     "debug_toolbar",
     "cargo",
@@ -26,6 +27,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -91,6 +93,8 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
 STATIC_URL = "static/"
 
 INTERNAL_IPS = [
@@ -103,4 +107,10 @@ LOGIN_REDIRECT_URL = '/'
 
 MESSAGE_TAGS = {
     messages.ERROR: "danger",
+}
+
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
 }

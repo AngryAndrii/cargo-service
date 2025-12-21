@@ -24,7 +24,19 @@ class DriverAdmin(UserAdmin):
             },
         ),
     )
-admin.site.register(Truck)
+
+@admin.register(Truck)
+class TruckAdmin(admin.ModelAdmin):
+    model = Truck
+
+    list_display = ["manufacturer", "model", "tonnage", "condition"]
+
+    # fieldsets = admin.ModelAdmin.fieldsets + (
+    #     ("Additional info", {"fields": ("manufacturer", "model", "tonnage", "condition",)}),
+    # )
+
+
+
 admin.site.register(Service)
 admin.site.register(Order)
 admin.site.register(Manufacturer)
