@@ -78,7 +78,7 @@ class Order(models.Model):
                                related_name="orders")
 
     class Meta:
-        ordering = ["-created_at"]
+        ordering = ["id"]
 
 
 class Service(models.Model):
