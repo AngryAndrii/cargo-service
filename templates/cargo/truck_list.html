@@ -10,12 +10,12 @@
         <img class="img-thumbnail object-fit-cover"
              style="width: 100px; height: 100px;" src="{% static "models/" %}{{ truck.image }}"
              alt="{{ truck.model }}">
-        <form method="post" action="{% url 'cargo:rent-truck' pk=truck.id %}">
-          {% csrf_token %}
-          <button type="submit" class="btn btn-success">
-            Rent truck
-          </button>
-        </form>
+        <button hx-get="{% url 'cargo:rent-truck-modal' truck.id %}"
+                hx-target="#modals-here"
+                hx-swap="innerHTML"
+                hx-trigger="click"
+                class="btn btn-primary"> Rent truck
+        </button>
       </li>
     {% endfor %}
   </ul>

@@ -9,6 +9,23 @@ from django.views.decorators.http import require_POST
 from cargo.models import Truck, Driver, Order
 
 
+def rent_truck_modal(request, pk):
+    truck = get_object_or_404(Truck, pk=pk)
+
+    return render(
+        request,
+        "includes/confirm_modal.html",
+        {
+            "modal_id": "rent-truck-modal",
+            "title": "Rent truck",
+            "body": f"Are you sure you want to rent truck {truck.manufacturer}"
+                    f" {truck.model} with '{truck.plate_number}' number?",
+            "confirm_text": "Rent truck",
+            "action_url": reverse("cargo:rent-truck", args=[pk]),
+        },
+    )
+
+
 @login_required
 def rent_truck(request, pk):
     if request.method != "POST":
@@ -53,6 +70,7 @@ def return_truck_modal(request, pk):
         },
     )
 
+
 @require_POST
 def return_truck(request, pk):
     truck = get_object_or_404(Truck, pk=pk)
@@ -68,7 +86,6 @@ def return_truck(request, pk):
     messages.success(request, "Truck has been successfully returned.")
 
     return HttpResponse('<script>window.location.reload()</script>')
-
 
 
 def take_order_modal(request, pk):
@@ -138,7 +155,8 @@ def complete_order(request, pk):
         order.status = Order.Status.COMPLETED
         order.save()
         driver.save()
-    messages.success(request, "Order successfully completed! money transferred to your account")
+    messages.success(request,
+                     "Order successfully completed! money transferred to your account")
 
     return HttpResponse(
         '<script>window.location.reload()</script>'

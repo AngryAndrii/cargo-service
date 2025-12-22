@@ -6,6 +6,7 @@ from cargo.models import Truck, Service, Order, Manufacturer
 
 driver = get_user_model()
 
+
 @admin.register(driver)
 class DriverAdmin(UserAdmin):
     model = driver
@@ -25,17 +26,12 @@ class DriverAdmin(UserAdmin):
         ),
     )
 
+
 @admin.register(Truck)
 class TruckAdmin(admin.ModelAdmin):
     model = Truck
 
     list_display = ["manufacturer", "model", "tonnage", "condition"]
-
-    # fieldsets = admin.ModelAdmin.fieldsets + (
-    #     ("Additional info", {"fields": ("manufacturer", "model", "tonnage", "condition",)}),
-    # )
-
-
 
 admin.site.register(Service)
 admin.site.register(Order)
