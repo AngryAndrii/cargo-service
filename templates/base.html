@@ -39,5 +39,45 @@
 <div id="modals-here"></div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+<script>
+    document.body.addEventListener('htmx:afterSwap', function (e) {
+        if (e.target.id === 'modals-here') {
+            const modalEl = e.target.querySelector('.modal')
+            if (!modalEl) return;
+
+            // Прибираємо старі модалки
+            document.querySelectorAll('#modals-here .modal.show').forEach(m => {
+                bootstrap.Modal.getInstance(m)?.hide();
+                m.remove();
+            });
+
+            const modal = new bootstrap.Modal(modalEl);
+            modal.show();
+
+            // Listener на закриття
+            modalEl.addEventListener('hidden.bs.modal', function () {
+                document.querySelectorAll('.modal-backdrop').forEach(b => b.remove());
+                document.body.classList.remove('modal-open');
+                document.body.style.overflow = '';
+            });
+        }
+    });
+
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.toast').forEach(function (toastEl) {
+            new bootstrap.Toast(toastEl, {autohide: true, delay: 5000}).show();
+        });
+    });
+</script>
+<script>
+    document.body.addEventListener('hidden.bs.modal', function (e) {
+        document.querySelectorAll('.modal-backdrop').forEach(b => b.remove());
+        document.body.classList.remove('modal-open');
+        document.body.style.overflow = '';
+    });
+</script>
+
 </body>
 </html>

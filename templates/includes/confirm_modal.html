@@ -19,8 +19,8 @@
       <div class="modal-footer">
         <form
             hx-post="{{ action_url }}"
-            hx-target="body"
-            hx-swap="outerHTML">
+            hx-target="#modals-here"
+            hx-swap="innerHTML">
           {% csrf_token %}
           <button type="submit"
                   class="btn btn-success">
@@ -28,7 +28,8 @@
           </button>
           <button type="button"
                   class="btn btn-secondary"
-                  data-bs-dismiss="modal">
+                  data-bs-dismiss="modal"
+                  aria-label="Close">
             Cancel
           </button>
         </form>

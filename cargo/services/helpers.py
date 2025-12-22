@@ -52,7 +52,7 @@ def rent_truck(request, pk):
         driver.save()
     messages.success(request, "Truck successfully rented!")
 
-    return redirect("cargo:truck-list")
+    return HttpResponse('<script>window.location.reload()</script>')
 
 
 def return_truck_modal(request, pk):
