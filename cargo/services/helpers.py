@@ -78,13 +78,23 @@ def return_truck(request, pk):
 
     if driver.truck != truck:
         messages.error(request, "This truck is not assigned to you.")
+        return redirect("cargo:truck-list")
+
+    has_active_orders = driver.orders.filter(
+        status=Order.Status.IN_PROGRESS
+    ).exists()
+
+    if has_active_orders:
+        messages.error(
+            request,
+            "You cannot return the truck while you have active orders."
+        )
         return redirect("cargo:truck-detail", pk=pk)
 
     driver.truck = None
     driver.save()
 
     messages.success(request, "Truck has been successfully returned.")
-
     return HttpResponse('<script>window.location.reload()</script>')
 
 

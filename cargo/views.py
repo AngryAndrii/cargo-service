@@ -1,6 +1,7 @@
 import datetime
 
 from django import forms
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
 from django.shortcuts import render
@@ -17,6 +18,7 @@ def index(request):
     return render(request, "cargo/index.html", context=context)
 
 
+@login_required
 def truck_list(request):
     trucks = Truck.objects.all()
     paginator = Paginator(trucks, 5)
@@ -34,11 +36,11 @@ def truck_list(request):
     return render(request, "cargo/truck_list.html", {"truck_list": page_obj})
 
 
-class OrderListView(generic.ListView):
+class OrderListView(LoginRequiredMixin, generic.ListView):
     model = Order
 
 
-class OrderDetailView(generic.DetailView):
+class OrderDetailView(LoginRequiredMixin, generic.DetailView):
     model = Order
 
 
@@ -54,7 +56,7 @@ class ServicesListView(LoginRequiredMixin, generic.ListView):
         return truck.services.all()
 
 
-class ServiceCreateView(generic.CreateView):
+class ServiceCreateView(LoginRequiredMixin, generic.CreateView):
     model = Service
     fields = "__all__"
     success_url = reverse_lazy("cargo:service-list")
