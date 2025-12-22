@@ -26,6 +26,7 @@
                 hx-target="#modals-here"
                 hx-swap="innerHTML"
                 class="btn btn-warning btn-sm w-100"
+                {% if active_order %}disabled{% endif %}
             >
               Return truck
             </button>
@@ -33,6 +34,18 @@
         {% else %}
           <li class="list-group-item text-muted">
             No truck rented
+          </li>
+        {% endif %}
+
+        {% if active_order %}
+          <li class="list-group-item">
+            <strong>Active order</strong><br>
+            {{ active_order.name }}<br>
+            {{ active_order.weight }} kg
+          </li>
+        {% else %}
+          <li class="list-group-item text-muted">
+            No active orders
           </li>
         {% endif %}
 
