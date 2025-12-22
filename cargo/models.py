@@ -38,6 +38,9 @@ class Truck(models.Model):
     class Meta:
         ordering = ["-tonnage"]
 
+    def __str__(self):
+        return f"{self.manufacturer} {self.model} ({self.plate_number})"
+
 
 class Manufacturer(models.Model):
     name = models.CharField(max_length=255, unique=True)
