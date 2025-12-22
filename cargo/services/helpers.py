@@ -120,6 +120,10 @@ def take_order(request, pk):
 
     driver: Driver = request.user
 
+    if driver.orders.filter(status=Order.Status.IN_PROGRESS).exists():
+        messages.error(request, "You already have an active order.")
+        return HttpResponse("<script>window.location.reload()</script>")
+
     if order.status != Order.Status.AVAILABLE:
         messages.error(request, "Order is not available.")
         return HttpResponse("<script>window.location.reload()</script>")
