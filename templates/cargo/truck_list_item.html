@@ -1,0 +1,29 @@
+{% load static %}
+{% for truck in truck_list %}
+  <li class="list-group-item">
+    {{ truck.manufacturer.name }} {{ truck.model }} {{ truck.tonnage }} | rent cost:
+    <b>{{ truck.cost_for_rent }}</b>
+    <img class="img-thumbnail object-fit-cover"
+         style="width: 100px; height: 100px;"
+         src="{% static 'models/' %}{{ truck.image }}?{{ truck.id }}"
+         alt="{{ truck.model }}">
+    <button hx-get="{% url 'cargo:rent-truck-modal' truck.id %}"
+            hx-target="#modals-here"
+            hx-swap="innerHTML"
+            hx-trigger="click"
+            class="btn btn-primary">
+      Rent truck
+    </button>
+  </li>
+{% endfor %}
+
+{% if truck_list.has_next %}
+  <li class="list-group-item text-center" id="load-more-container">
+    <button class="btn btn-primary"
+            hx-get="?page={{ truck_list.next_page_number }}"
+            hx-target="#load-more-container"
+            hx-swap="outerHTML">
+      Load More Trucks...
+    </button>
+  </li>
+{% endif %}

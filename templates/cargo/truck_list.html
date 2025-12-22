@@ -3,22 +3,8 @@
 
 {% block content %}
   <h1>Truck list</h1>
-  <ul class="list-group">
-    {% for truck in truck_list %}
-      <li class="list-group-item">{{ truck.manufacturer.name }} {{ truck.model }} {{ truck.tonnage }} | rent cost:
-        <b>{{ truck.cost_for_rent }}</b>
-        <img class="img-thumbnail object-fit-cover"
-             style="width: 100px; height: 100px;" src="{% static "models/" %}{{ truck.image }}"
-             alt="{{ truck.model }}">
-        <button hx-get="{% url 'cargo:rent-truck-modal' truck.id %}"
-                hx-target="#modals-here"
-                hx-swap="innerHTML"
-                hx-trigger="click"
-                class="btn btn-primary"> Rent truck
-        </button>
-      </li>
-    {% endfor %}
+  <ul id="truck-list" class="list-group">
+    {% include 'cargo/truck_list_item.html' %}
   </ul>
-
-
 {% endblock %}
+

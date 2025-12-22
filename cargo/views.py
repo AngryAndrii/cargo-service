@@ -1,4 +1,6 @@
 import datetime
+
+from django.core.paginator import Paginator
 from django.shortcuts import render
 from django.views import generic
 
@@ -12,8 +14,21 @@ def index(request):
     return render(request, "cargo/index.html", context=context)
 
 
-class TruckListView(generic.ListView):
-    model = Truck
+def truck_list(request):
+    trucks = Truck.objects.all()
+    paginator = Paginator(trucks, 5)
+    page_number = request.GET.get('page', 1)
+    try:
+        page_number = int(page_number)
+    except ValueError:
+        page_number = 1
+
+    page_obj = paginator.get_page(page_number)
+
+    if request.headers.get("HX-Request") == "true":
+        return render(request, "cargo/truck_list_item.html", {"truck_list": page_obj})
+
+    return render(request, "cargo/truck_list.html", {"truck_list": page_obj})
 
 
 class OrderListView(generic.ListView):

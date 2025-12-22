@@ -35,8 +35,8 @@ def rent_truck(request, pk):
     truck = get_object_or_404(Truck, pk=pk)
 
     if driver.truck is not None:
-        messages.error(request, "You've already rented a truck!")
-        return redirect("cargo:truck-list")
+        messages.error(request, "You already have a truck!")
+        return HttpResponse('<script>window.location.reload()</script>')
 
     if Driver.objects.filter(truck=truck).exists():
         messages.error(request, "This truck rented by another driver!")
