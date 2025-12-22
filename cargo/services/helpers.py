@@ -122,11 +122,11 @@ def take_order(request, pk):
 
     if order.status != Order.Status.AVAILABLE:
         messages.error(request, "Order is not available.")
-        return redirect("cargo:order-detail", pk=pk)
+        return HttpResponse("<script>window.location.reload()</script>")
 
     if driver.truck.tonnage < order.weight:
         messages.error(request, "Your car does not have enough load capacity.")
-        return redirect("cargo:order-detail", pk=pk)
+        return HttpResponse("<script>window.location.reload()</script>")
 
     order.status = Order.Status.IN_PROGRESS
     order.driver = driver
@@ -134,7 +134,7 @@ def take_order(request, pk):
     messages.success(request, "You've just taken this order!")
 
     return HttpResponse(
-        '<script>window.location.reload()</script>'
+        "<script>window.location.reload()</script>"
     )
 
 
