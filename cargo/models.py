@@ -36,7 +36,7 @@ class Truck(models.Model):
     image = models.CharField(max_length=255, null=True)
 
     class Meta:
-        ordering = ["-tonnage"]
+        ordering = ["condition"]
 
     def __str__(self):
         return f"{self.manufacturer} {self.model} ({self.plate_number})"
