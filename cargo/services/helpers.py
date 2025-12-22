@@ -40,11 +40,11 @@ def rent_truck(request, pk):
 
     if Driver.objects.filter(truck=truck).exists():
         messages.error(request, "This truck rented by another driver!")
-        return redirect("cargo:truck-list")
+        return HttpResponse('<script>window.location.reload()</script>')
 
     if driver.money < truck.cost_for_rent:
         messages.error(request, "Not enough money to rent this truck")
-        return redirect("cargo:truck-list")
+        return HttpResponse('<script>window.location.reload()</script>')
 
     with transaction.atomic():
         driver.money -= truck.cost_for_rent
