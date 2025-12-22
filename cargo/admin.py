@@ -33,6 +33,7 @@ class TruckAdmin(admin.ModelAdmin):
 
     list_display = ["manufacturer", "model", "tonnage", "condition"]
 
+
 admin.site.register(Service)
 admin.site.register(Order)
 admin.site.register(Manufacturer)

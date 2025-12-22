@@ -1,5 +1,6 @@
 from .models import Order
 
+
 def active_order(request):
     if request.user.is_authenticated:
         return {
