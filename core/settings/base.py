@@ -5,8 +5,7 @@ from django.contrib.messages import constants as messages
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY",
-                            "django-insecure-4fx5u&v+k&fd(e70+m(qe(#=x#q6vvyll#3$g@9#4d)o674h4g")
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "django-insecure-4fx5u&v+k&fd(e70+m(qe(#=x#q6vvyll#3$g@9#4d)o674h4g")
 
 INSTALLED_APPS = [
     "django.contrib.admin",
