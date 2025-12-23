@@ -5,9 +5,9 @@ from django.contrib.messages import constants as messages
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = "django-insecure-4fx5u&v+k&fd(e70+m(qe(#=x#q6vvyll#3$g@9#4d)o674h4g"
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "django-insecure-4fx5u&v+k&fd(e70+m(qe(#=x#q6vvyll#3$g@9#4d)o674h4g")
 
-DEBUG = True
+DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
 
 ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
@@ -112,10 +112,6 @@ STORAGES = {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
-
-# DEBUG_TOOLBAR_CONFIG = {
-#     "SHOW_TOOLBAR_CALLBACK": lambda request: False,
-# }
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 
