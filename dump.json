@@ -1,0 +1,961 @@
+[
+{
+    "model": "cargo.driver",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$L9Nn0tyJvineAONpqfxUjj$3eA75bfcb3sv2XOGc2CQ+YQ+KkLo0MT5y2nC7zMVfn0=",
+        "last_login": "2025-12-23T11:54:13.747Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "admin@mail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2025-12-18T13:29:26Z",
+        "license_number": "JIM22222",
+        "money": "4080.06",
+        "truck": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "cargo.driver",
+    "pk": 2,
+    "fields": {
+        "password": "qwe123",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "driver_one",
+        "first_name": "Jim",
+        "last_name": "Bom",
+        "email": "bom@mail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-12-19T10:55:26Z",
+        "license_number": "JRK12345",
+        "money": "1500.00",
+        "truck": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "cargo.driver",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$qzG8UppPWeHGF4WIFIAmEA$MOlcdcozDM2YFJSyShI2qJJJVgIjtp2NM2IUWltmiMQ=",
+        "last_login": "2025-12-19T13:21:10.339Z",
+        "is_superuser": false,
+        "username": "Bobby",
+        "first_name": "Bob",
+        "last_name": "Bobovich",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-12-19T12:09:03Z",
+        "license_number": "KOJ12345",
+        "money": "0.00",
+        "truck": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "cargo.driver",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$T1OxqsTKPdIstzoMlWsZFr$ZcnDiW9FJsLsY5h+/10bIQhj3jXZm5zZKTddFfx52Jg=",
+        "last_login": "2025-12-22T19:59:40.801Z",
+        "is_superuser": false,
+        "username": "user1",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-12-22T14:23:58Z",
+        "license_number": "JOY11111",
+        "money": "5048.71",
+        "truck": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "cargo.driver",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$0JqRWxBc6ytlj92mgap8Sa$+sBaAD1cHqInXevzIMF8CAggorlTnUA1VMu56N2HaPc=",
+        "last_login": "2025-12-22T20:01:07.426Z",
+        "is_superuser": false,
+        "username": "forel",
+        "first_name": "John",
+        "last_name": "forel",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-12-22T20:00:33Z",
+        "license_number": "lON26231",
+        "money": "152.00",
+        "truck": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "cargo.driver",
+    "pk": 6,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$2hoGYwdWdmmJaiFYCLKDAE$Dwdm3lypYN2zcu+hV1Gzf4hZchoa38S4Ms2p/Aa1eG8=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Testuser",
+        "first_name": "Testname",
+        "last_name": "Testlastname",
+        "email": "test_@mail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-12-23T11:55:04Z",
+        "license_number": "LOU21562",
+        "money": "1560.00",
+        "truck": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "cargo.driver",
+    "pk": 7,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$eqHqhT3qDMf4aRwtp74HyR$HSnb1AVyoY8XNRfvE9AH37BIT6t0JHGAE+59ttxDgjE=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Demouser",
+        "first_name": "Demoname",
+        "last_name": "Demolastname",
+        "email": "demo@mail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-12-23T11:56:12Z",
+        "license_number": "FRM43290",
+        "money": "5620.00",
+        "truck": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 1,
+    "fields": {
+        "plate_number": "SM7021",
+        "model": "Transit",
+        "tonnage": 1200,
+        "manufacturer": 1,
+        "cost_for_rent": "46.25",
+        "condition": 87,
+        "image": "ford_transit.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 2,
+    "fields": {
+        "plate_number": "HE5884",
+        "model": "Transit",
+        "tonnage": 1200,
+        "manufacturer": 1,
+        "cost_for_rent": "43.65",
+        "condition": 72,
+        "image": "ford_transit.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 3,
+    "fields": {
+        "plate_number": "WR1660",
+        "model": "Transit",
+        "tonnage": 1200,
+        "manufacturer": 1,
+        "cost_for_rent": "49.16",
+        "condition": 76,
+        "image": "ford_transit.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 4,
+    "fields": {
+        "plate_number": "SX2199",
+        "model": "Transit",
+        "tonnage": 1200,
+        "manufacturer": 1,
+        "cost_for_rent": "48.60",
+        "condition": 62,
+        "image": "ford_transit.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 5,
+    "fields": {
+        "plate_number": "XB2918",
+        "model": "Sprinter",
+        "tonnage": 1400,
+        "manufacturer": 2,
+        "cost_for_rent": "59.48",
+        "condition": 91,
+        "image": "sprinter.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 6,
+    "fields": {
+        "plate_number": "JF3258",
+        "model": "Sprinter",
+        "tonnage": 1400,
+        "manufacturer": 2,
+        "cost_for_rent": "59.07",
+        "condition": 71,
+        "image": "sprinter.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 7,
+    "fields": {
+        "plate_number": "VA4518",
+        "model": "Sprinter",
+        "tonnage": 1400,
+        "manufacturer": 2,
+        "cost_for_rent": "61.05",
+        "condition": 88,
+        "image": "sprinter.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 8,
+    "fields": {
+        "plate_number": "ZL8647",
+        "model": "Sprinter",
+        "tonnage": 1400,
+        "manufacturer": 2,
+        "cost_for_rent": "54.00",
+        "condition": 89,
+        "image": "sprinter.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 9,
+    "fields": {
+        "plate_number": "JE6895",
+        "model": "Atego",
+        "tonnage": 4500,
+        "manufacturer": 2,
+        "cost_for_rent": "162.66",
+        "condition": 92,
+        "image": "mercedes_benz_atego.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 10,
+    "fields": {
+        "plate_number": "HC3682",
+        "model": "Atego",
+        "tonnage": 4500,
+        "manufacturer": 2,
+        "cost_for_rent": "181.83",
+        "condition": 93,
+        "image": "mercedes_benz_atego.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 11,
+    "fields": {
+        "plate_number": "KH7013",
+        "model": "Atego",
+        "tonnage": 4500,
+        "manufacturer": 2,
+        "cost_for_rent": "167.92",
+        "condition": 89,
+        "image": "mercedes_benz_atego.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 12,
+    "fields": {
+        "plate_number": "AQ6301",
+        "model": "Actros",
+        "tonnage": 25000,
+        "manufacturer": 2,
+        "cost_for_rent": "1071.25",
+        "condition": 68,
+        "image": "mercedes_benc_actros.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 13,
+    "fields": {
+        "plate_number": "BE6242",
+        "model": "Actros",
+        "tonnage": 25000,
+        "manufacturer": 2,
+        "cost_for_rent": "969.26",
+        "condition": 82,
+        "image": "mercedes_benc_actros.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 14,
+    "fields": {
+        "plate_number": "BS3164",
+        "model": "Actros",
+        "tonnage": 25000,
+        "manufacturer": 2,
+        "cost_for_rent": "1022.50",
+        "condition": 64,
+        "image": "mercedes_benc_actros.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 15,
+    "fields": {
+        "plate_number": "MH2972",
+        "model": "Crafter",
+        "tonnage": 1300,
+        "manufacturer": 3,
+        "cost_for_rent": "50.40",
+        "condition": 67,
+        "image": "volc_crafter.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 16,
+    "fields": {
+        "plate_number": "QY7412",
+        "model": "Crafter",
+        "tonnage": 1300,
+        "manufacturer": 3,
+        "cost_for_rent": "57.14",
+        "condition": 87,
+        "image": "volc_crafter.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 17,
+    "fields": {
+        "plate_number": "XA9579",
+        "model": "Master",
+        "tonnage": 1500,
+        "manufacturer": 4,
+        "cost_for_rent": "61.13",
+        "condition": 87,
+        "image": "renault_master.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 18,
+    "fields": {
+        "plate_number": "ID3297",
+        "model": "Master",
+        "tonnage": 1500,
+        "manufacturer": 4,
+        "cost_for_rent": "59.36",
+        "condition": 96,
+        "image": "renault_master.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 19,
+    "fields": {
+        "plate_number": "WC3917",
+        "model": "Ducato",
+        "tonnage": 1600,
+        "manufacturer": 5,
+        "cost_for_rent": "59.19",
+        "condition": 76,
+        "image": "fiat_ducato.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 20,
+    "fields": {
+        "plate_number": "VT4764",
+        "model": "Ducato",
+        "tonnage": 1600,
+        "manufacturer": 5,
+        "cost_for_rent": "64.58",
+        "condition": 75,
+        "image": "fiat_ducato.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 21,
+    "fields": {
+        "plate_number": "GJ8876",
+        "model": "Ducato",
+        "tonnage": 1600,
+        "manufacturer": 5,
+        "cost_for_rent": "66.62",
+        "condition": 87,
+        "image": "fiat_ducato.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 22,
+    "fields": {
+        "plate_number": "II8371",
+        "model": "Ducato",
+        "tonnage": 1600,
+        "manufacturer": 5,
+        "cost_for_rent": "64.05",
+        "condition": 76,
+        "image": "fiat_ducato.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 23,
+    "fields": {
+        "plate_number": "MC7106",
+        "model": "Eurocargo",
+        "tonnage": 3500,
+        "manufacturer": 6,
+        "cost_for_rent": "134.32",
+        "condition": 86,
+        "image": "iveco_eurocargo.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 24,
+    "fields": {
+        "plate_number": "KS9282",
+        "model": "Eurocargo",
+        "tonnage": 3500,
+        "manufacturer": 6,
+        "cost_for_rent": "127.33",
+        "condition": 72,
+        "image": "iveco_eurocargo.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 25,
+    "fields": {
+        "plate_number": "GY1468",
+        "model": "Eurocargo",
+        "tonnage": 3500,
+        "manufacturer": 6,
+        "cost_for_rent": "141.01",
+        "condition": 93,
+        "image": "iveco_eurocargo.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 26,
+    "fields": {
+        "plate_number": "QG5709",
+        "model": "TGL",
+        "tonnage": 4000,
+        "manufacturer": 7,
+        "cost_for_rent": "175.00",
+        "condition": 60,
+        "image": "man_tgl.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 27,
+    "fields": {
+        "plate_number": "FX2294",
+        "model": "TGL",
+        "tonnage": 4000,
+        "manufacturer": 7,
+        "cost_for_rent": "151.29",
+        "condition": 64,
+        "image": "man_tgl.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 28,
+    "fields": {
+        "plate_number": "CA1420",
+        "model": "TGX",
+        "tonnage": 26000,
+        "manufacturer": 7,
+        "cost_for_rent": "991.33",
+        "condition": 68,
+        "image": "man_tgx.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 29,
+    "fields": {
+        "plate_number": "GI7152",
+        "model": "TGX",
+        "tonnage": 26000,
+        "manufacturer": 7,
+        "cost_for_rent": "998.34",
+        "condition": 91,
+        "image": "man_tgx.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 30,
+    "fields": {
+        "plate_number": "DB3716",
+        "model": "TGX",
+        "tonnage": 26000,
+        "manufacturer": 7,
+        "cost_for_rent": "1012.09",
+        "condition": 65,
+        "image": "man_tgx.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 31,
+    "fields": {
+        "plate_number": "WQ3760",
+        "model": "TGX",
+        "tonnage": 26000,
+        "manufacturer": 7,
+        "cost_for_rent": "1143.09",
+        "condition": 85,
+        "image": "man_tgx.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 32,
+    "fields": {
+        "plate_number": "KU8854",
+        "model": "FH",
+        "tonnage": 24000,
+        "manufacturer": 8,
+        "cost_for_rent": "938.35",
+        "condition": 71,
+        "image": "volvo_fh.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 33,
+    "fields": {
+        "plate_number": "CE3331",
+        "model": "FH",
+        "tonnage": 24000,
+        "manufacturer": 8,
+        "cost_for_rent": "948.56",
+        "condition": 79,
+        "image": "volvo_fh.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 34,
+    "fields": {
+        "plate_number": "RS4331",
+        "model": "R450",
+        "tonnage": 25000,
+        "manufacturer": 9,
+        "cost_for_rent": "958.65",
+        "condition": 86,
+        "image": "scania R450.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 35,
+    "fields": {
+        "plate_number": "JX4086",
+        "model": "R450",
+        "tonnage": 25000,
+        "manufacturer": 9,
+        "cost_for_rent": "1098.08",
+        "condition": 72,
+        "image": "scania R450.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 36,
+    "fields": {
+        "plate_number": "JX4989",
+        "model": "R450",
+        "tonnage": 25000,
+        "manufacturer": 9,
+        "cost_for_rent": "1067.25",
+        "condition": 96,
+        "image": "scania R450.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 37,
+    "fields": {
+        "plate_number": "PS3033",
+        "model": "R450",
+        "tonnage": 25000,
+        "manufacturer": 9,
+        "cost_for_rent": "903.24",
+        "condition": 72,
+        "image": "scania R450.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 38,
+    "fields": {
+        "plate_number": "LK8823",
+        "model": "LF",
+        "tonnage": 4200,
+        "manufacturer": 10,
+        "cost_for_rent": "164.85",
+        "condition": 97,
+        "image": "daf_lf.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 39,
+    "fields": {
+        "plate_number": "YZ5314",
+        "model": "LF",
+        "tonnage": 4200,
+        "manufacturer": 10,
+        "cost_for_rent": "167.88",
+        "condition": 94,
+        "image": "daf_lf.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 40,
+    "fields": {
+        "plate_number": "YH2882",
+        "model": "LF",
+        "tonnage": 4200,
+        "manufacturer": 10,
+        "cost_for_rent": "173.17",
+        "condition": 69,
+        "image": "daf_lf.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 41,
+    "fields": {
+        "plate_number": "DR1216",
+        "model": "LF",
+        "tonnage": 4200,
+        "manufacturer": 10,
+        "cost_for_rent": "152.08",
+        "condition": 90,
+        "image": "daf_lf.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 42,
+    "fields": {
+        "plate_number": "AZ1882",
+        "model": "XF",
+        "tonnage": 24000,
+        "manufacturer": 10,
+        "cost_for_rent": "980.39",
+        "condition": 95,
+        "image": "daf_xf.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 43,
+    "fields": {
+        "plate_number": "ZU7392",
+        "model": "XF",
+        "tonnage": 24000,
+        "manufacturer": 10,
+        "cost_for_rent": "895.08",
+        "condition": 73,
+        "image": "daf_xf.jpg"
+    }
+},
+{
+    "model": "cargo.truck",
+    "pk": 44,
+    "fields": {
+        "plate_number": "RO3966",
+        "model": "XF",
+        "tonnage": 24000,
+        "manufacturer": 10,
+        "cost_for_rent": "912.42",
+        "condition": 69,
+        "image": "daf_xf.jpg"
+    }
+},
+{
+    "model": "cargo.manufacturer",
+    "pk": 1,
+    "fields": {
+        "name": "Ford",
+        "country": "USA",
+        "image": null
+    }
+},
+{
+    "model": "cargo.manufacturer",
+    "pk": 2,
+    "fields": {
+        "name": "Mercedes-Benz",
+        "country": "Germany",
+        "image": null
+    }
+},
+{
+    "model": "cargo.manufacturer",
+    "pk": 3,
+    "fields": {
+        "name": "Volkswagen",
+        "country": "Germany",
+        "image": null
+    }
+},
+{
+    "model": "cargo.manufacturer",
+    "pk": 4,
+    "fields": {
+        "name": "Renault",
+        "country": "France",
+        "image": null
+    }
+},
+{
+    "model": "cargo.manufacturer",
+    "pk": 5,
+    "fields": {
+        "name": "Fiat",
+        "country": "Italy",
+        "image": null
+    }
+},
+{
+    "model": "cargo.manufacturer",
+    "pk": 6,
+    "fields": {
+        "name": "Iveco",
+        "country": "Italy",
+        "image": null
+    }
+},
+{
+    "model": "cargo.manufacturer",
+    "pk": 7,
+    "fields": {
+        "name": "MAN",
+        "country": "Germany",
+        "image": null
+    }
+},
+{
+    "model": "cargo.manufacturer",
+    "pk": 8,
+    "fields": {
+        "name": "Volvo",
+        "country": "Sweden",
+        "image": null
+    }
+},
+{
+    "model": "cargo.manufacturer",
+    "pk": 9,
+    "fields": {
+        "name": "Scania",
+        "country": "Sweden",
+        "image": null
+    }
+},
+{
+    "model": "cargo.manufacturer",
+    "pk": 10,
+    "fields": {
+        "name": "DAF",
+        "country": "Netherlands",
+        "image": null
+    }
+},
+{
+    "model": "cargo.order",
+    "pk": 7,
+    "fields": {
+        "name": "Order 1",
+        "weight": 500,
+        "description": "Transport electronics",
+        "status": "AV",
+        "payment": "1500.00",
+        "created_at": "2025-12-22T21:45:04.381Z",
+        "planned_at": "2025-12-23T08:00:00Z",
+        "finished_at": "2025-12-24T08:00:00Z",
+        "driver": null
+    }
+},
+{
+    "model": "cargo.order",
+    "pk": 8,
+    "fields": {
+        "name": "Order 6",
+        "weight": 1200,
+        "description": "Transport furniture",
+        "status": "IP",
+        "payment": "3000.00",
+        "created_at": "2025-12-22T21:46:08.595Z",
+        "planned_at": "2025-12-22T10:00:00Z",
+        "finished_at": "2025-12-25T13:00:00Z",
+        "driver": null
+    }
+},
+{
+    "model": "cargo.order",
+    "pk": 9,
+    "fields": {
+        "name": "Order 9",
+        "weight": 800,
+        "description": "Transport books",
+        "status": "CO",
+        "payment": "1000.00",
+        "created_at": "2025-12-22T21:46:22.769Z",
+        "planned_at": "2025-12-19T14:00:00Z",
+        "finished_at": "2025-12-20T16:00:00Z",
+        "driver": null
+    }
+},
+{
+    "model": "cargo.order",
+    "pk": 10,
+    "fields": {
+        "name": "Laptop shipment",
+        "weight": 500,
+        "description": "Transport 10000 laptops to Kyiv office",
+        "status": "AV",
+        "payment": "980.00",
+        "created_at": "2025-12-22T21:48:48.747Z",
+        "planned_at": "2025-12-23T10:00:00Z",
+        "finished_at": "2025-12-23T16:00:00Z",
+        "driver": null
+    }
+},
+{
+    "model": "cargo.order",
+    "pk": 11,
+    "fields": {
+        "name": "Furniture delivery",
+        "weight": 1200,
+        "description": "Deliver office chairs and desks",
+        "status": "AV",
+        "payment": "620.00",
+        "created_at": "2025-12-22T21:49:21.598Z",
+        "planned_at": "2025-12-23T13:00:00Z",
+        "finished_at": "2025-12-24T08:00:00Z",
+        "driver": null
+    }
+},
+{
+    "model": "cargo.order",
+    "pk": 12,
+    "fields": {
+        "name": "Construction materials",
+        "weight": 22000,
+        "description": "Transport cement bags to construction site",
+        "status": "AV",
+        "payment": "4000.00",
+        "created_at": "2025-12-22T21:49:56.552Z",
+        "planned_at": "2025-12-21T10:00:00Z",
+        "finished_at": "2025-12-25T13:00:00Z",
+        "driver": null
+    }
+},
+{
+    "model": "cargo.order",
+    "pk": 13,
+    "fields": {
+        "name": "Food supplies",
+        "weight": 600,
+        "description": "Deliver fresh groceries to supermarket",
+        "status": "IP",
+        "payment": "1800.00",
+        "created_at": "2025-12-22T21:50:10.310Z",
+        "planned_at": "2025-12-22T09:00:00Z",
+        "finished_at": "2025-12-23T12:00:00Z",
+        "driver": null
+    }
+},
+{
+    "model": "cargo.order",
+    "pk": 14,
+    "fields": {
+        "name": "Medical equipment",
+        "weight": 15000,
+        "description": "Deliver ventilators and monitors to hospital",
+        "status": "CO",
+        "payment": "5000.00",
+        "created_at": "2025-12-22T21:50:27.264Z",
+        "planned_at": "2025-12-18T10:00:00Z",
+        "finished_at": "2025-12-18T14:00:00Z",
+        "driver": null
+    }
+},
+{
+    "model": "cargo.order",
+    "pk": 15,
+    "fields": {
+        "name": "Book transport",
+        "weight": 2500,
+        "description": "Move library books to new location",
+        "status": "AV",
+        "payment": "950.00",
+        "created_at": "2025-12-22T21:50:52.608Z",
+        "planned_at": "2025-12-22T14:00:00Z",
+        "finished_at": "2025-12-23T16:00:00Z",
+        "driver": null
+    }
+},
+{
+    "model": "cargo.order",
+    "pk": 16,
+    "fields": {
+        "name": "Empty boxes",
+        "weight": 150,
+        "description": "Move empty boxes, easy order",
+        "status": "AV",
+        "payment": "250.00",
+        "created_at": "2025-12-22T21:51:39.531Z",
+        "planned_at": "2025-12-22T14:00:00Z",
+        "finished_at": "2025-12-23T16:00:00Z",
+        "driver": null
+    }
+}
+]

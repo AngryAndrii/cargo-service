@@ -3,13 +3,10 @@ from pathlib import Path
 
 from django.contrib.messages import constants as messages
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "django-insecure-4fx5u&v+k&fd(e70+m(qe(#=x#q6vvyll#3$g@9#4d)o674h4g")
-
-DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
-
-ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY",
+                            "django-insecure-4fx5u&v+k&fd(e70+m(qe(#=x#q6vvyll#3$g@9#4d)o674h4g")
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -56,13 +53,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "core.wsgi.application"
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
