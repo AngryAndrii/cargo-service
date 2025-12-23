@@ -20,7 +20,7 @@ def index(request):
 
 @login_required
 def truck_list(request):
-    trucks = Truck.objects.all()
+    trucks = Truck.objects.select_related("manufacturer").all()
     paginator = Paginator(trucks, 5)
     page_number = request.GET.get('page', 1)
     try:
