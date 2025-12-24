@@ -10,6 +10,11 @@ Cargo Service is a Django-based web application for managing cargo transportatio
 Drivers can rent trucks, take available orders based on truck capacity, and track order status in real time.
 The project focuses on clear business logic, data consistency, and practical backend architecture.
 
+## Diagram
+
+![scheme](images_for_readme/scheme.JPG)
+
+
 ## Quick start
 
 
