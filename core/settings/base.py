@@ -1,4 +1,5 @@
 import os
+import sys
 from pathlib import Path
 
 from django.contrib.messages import constants as messages
@@ -96,12 +97,13 @@ MESSAGE_TAGS = {
     messages.ERROR: "danger",
 }
 
-STORAGES = {
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
-
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+if "test" in sys.argv:
+    STORAGES = {
+        "staticfiles": {
+            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+        },
+    }
