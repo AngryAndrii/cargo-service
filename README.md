@@ -26,50 +26,50 @@ The project focuses on clear business logic, data consistency, and practical bac
 ## Application functionality
 
 After entering the site, we find ourselves on the login page.
-![alt text](/images_for_readme/1.jpg)
+![entert](images_for_readme/1.JPG)
 
 Log in to the sites using demo user data
 > Username: Demouser
 > 
 > Password: 1qazcde3
 
-![alt text](/images_for_readme/2.jpg)
+![login](images_for_readme/2.JPG)
 
 After that we can go to trucks page to rent a car. 
 The list of cars is displayed in 5 pieces, and with loading via a button
-![alt text](/images_for_readme/3.jpg)
+![carlist](images_for_readme/3.JPG)
 
 we can rent any car if it is not occupied by another driver, in which case we will get an error
 After that, in sidebar we can see our rented truck, and our just get smoller (with a transaction)
-![alt text](/images_for_readme/4.jpg)
+![rent car](images_for_readme/4.JPG)
 
 Now we can go to the orders page. All requests differ in color and status, some are already being 
 fulfilled by other drivers. We can choose from green (available)
-![alt text](/images_for_readme/5.jpg)
+![car_rented](images_for_readme/5.JPG)
 
 Oh, great order, metal rails. But what is this? The weight is almost 30 tons, and our truck is designed for less. 
 When you try to take this order, an error message will be displayed.
-![alt text](/images_for_readme/heavy_error.jpg)
+![heavy_error](images_for_readme/heavy_error.JPG)
 
 So let's choose something easier. After receiving the order, we see a message, and its display in the sidebar
-![alt text](/images_for_readme/taked_order.jpg)
+![order_took](images_for_readme/taked_order.JPG)
 
 Now we will assume that we have completed the order, click the completed order button 
 (by the way, confirmation of all actions occurs through modal windows)
-![alt text](/images_for_readme/complete_order.jpg)
+![complete_order](images_for_readme/complete_order.JPG)
 The order goes into the completed status, and money is added to our account, this is visible in the sidebar
-![alt text](/images_for_readme/complete_order_succesfull.jpg)
+![complete_succes](images_for_readme/complete_order_succesfull.JPG)
 
 The service book page displays information about all car maintenance. Let's say you performed it at a service station, 
 and you can enter the data here using a convenient form.
-![alt text](/images_for_readme/repair.jpg)
+![repair](images_for_readme/repair.JPG)
 
 after confirmation, the entry is added to the list of all repairs. Money is not debited. since the work was 
 carried out separately from our platform
-![alt text](/images_for_readme/repair_complete.jpg)
+![repair_complete](images_for_readme/repair_complete.JPG)
 
 Let's say we decide to return the track. To do this, click on the return button in the sidebar.
-![alt text](/images_for_readme/return_truck.jpg)
+![return_truck](images_for_readme/return_truck.jpg)
 
 Track successfully returned
-![alt text](/images_for_readme/truck_returned.jpg)
+![truck_returned](images_for_readme/truck_returned.jpg)
