@@ -10,6 +10,7 @@
         <tr>
           <th>#</th>
           <th>Name</th>
+          <th>Payment</th>
           <th>Description</th>
           <th>Status</th>
           <th></th>
@@ -27,6 +28,7 @@
                 {{ order.name }}
               </a>
             </td>
+            <td>{{ order.payment }}</td>
 
             <td>{{ order.description|truncatechars:60 }}</td>
 
