@@ -7,13 +7,13 @@ from cargo.services.helpers import (rent_truck,
                                     complete_order,
                                     return_truck_modal,
                                     return_truck, rent_truck_modal)
-from cargo.views import (index,
+from cargo.views import (IndexView,
                          OrderListView,
                          ServicesListView,
                          OrderDetailView, truck_list, ServiceCreateView)
 
 urlpatterns = [
-    path("", index, name="index"),
+    path("", IndexView.as_view(), name="index"),
     path("trucks/", truck_list, name="truck-list"),
     path("orders/", OrderListView.as_view(), name="order-list"),
     path("services/", ServicesListView.as_view(), name="service-list"),

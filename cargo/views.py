@@ -11,11 +11,8 @@ from django.views import generic
 from cargo.models import Truck, Order, Service
 
 
-def index(request):
-    context = {
-        "time": datetime.datetime.now(),
-    }
-    return render(request, "cargo/index.html", context=context)
+class IndexView(generic.TemplateView):
+    template_name = "cargo/index.html"
 
 
 @login_required
