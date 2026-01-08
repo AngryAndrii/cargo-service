@@ -29,6 +29,10 @@ class TruckListView(LoginRequiredMixin, generic.ListView):
         return ["cargo/truck_list.html"]
 
 
+class TruckDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Truck
+
+
 class OrderListView(LoginRequiredMixin, generic.ListView):
     model = Order
 

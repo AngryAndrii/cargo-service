@@ -10,7 +10,10 @@ from cargo.services.helpers import (rent_truck,
 from cargo.views import (IndexView,
                          OrderListView,
                          ServicesListView,
-                         OrderDetailView, TruckListView, ServiceCreateView)
+                         OrderDetailView,
+                         TruckListView,
+                         ServiceCreateView,
+                         TruckDetailView)
 
 urlpatterns = [
     path("", IndexView.as_view(), name="index"),
@@ -18,6 +21,11 @@ urlpatterns = [
     path("orders/", OrderListView.as_view(), name="order-list"),
     path("services/", ServicesListView.as_view(), name="service-list"),
     path("services/create/", ServiceCreateView.as_view(), name="service-create"),
+    path(
+        "trucks/<int:pk>/truck-detail/",
+        TruckDetailView.as_view(),
+        name="truck-detail",
+    ),
     path(
         "trucks/<int:pk>/rent-truck/modal/",
         rent_truck_modal,

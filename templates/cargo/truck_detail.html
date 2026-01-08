@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    {{ truck.manufacturer }}
+  </h1>
+  <h2>
+    {{ truck.model }}
+  </h2>
+
+  <h3>
+    {{ truck.tonnage }}
+  </h3>
+
+  <button hx-get="{% url 'cargo:rent-truck-modal' truck.id %}"
+          hx-target="#modals-here"
+          hx-swap="innerHTML"
+          class="btn btn-primary btn-sm">
+    Rent truck
+  </button>
+
+{% endblock %}

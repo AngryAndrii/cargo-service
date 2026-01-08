@@ -1,6 +1,7 @@
 {% load static %}
 
 {% for truck in page_obj %}
+
   <li class="list-group-item p-4">
     <div class="row g-3 align-items-start">
 
@@ -18,13 +19,10 @@
         <p class="mb-2">
           Rent cost: <b>{{ truck.cost_for_rent }}</b>
         </p>
-
-        <button hx-get="{% url 'cargo:rent-truck-modal' truck.id %}"
-                hx-target="#modals-here"
-                hx-swap="innerHTML"
-                class="btn btn-primary btn-sm">
-          Rent truck
-        </button>
+        <a href="{% url 'cargo:truck-detail' pk=truck.id %}"
+           class="btn btn-primary btn-sm">
+          detail
+        </a>
       </div>
 
       <div class="col-md-4 text-center">
@@ -36,6 +34,7 @@
 
     </div>
   </li>
+
 {% endfor %}
 
 {% if page_obj.has_next %}
