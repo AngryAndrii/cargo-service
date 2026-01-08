@@ -15,22 +15,18 @@ class IndexView(generic.TemplateView):
     template_name = "cargo/index.html"
 
 
-@login_required
-def truck_list(request):
-    trucks = Truck.objects.select_related("manufacturer").all()
-    paginator = Paginator(trucks, 5)
-    page_number = request.GET.get('page', 1)
-    try:
-        page_number = int(page_number)
-    except ValueError:
-        page_number = 1
+class TruckListView(LoginRequiredMixin, generic.ListView):
+    model = Truck
+    paginate_by = 5
+    template_name = "cargo/truck_list.html"
 
-    page_obj = paginator.get_page(page_number)
+    def get_queryset(self):
+        return Truck.objects.select_related("manufacturer")
 
-    if request.headers.get("HX-Request") == "true":
-        return render(request, "cargo/truck_list_item.html", {"truck_list": page_obj})
-
-    return render(request, "cargo/truck_list.html", {"truck_list": page_obj})
+    def get_template_names(self):
+        if self.request.headers.get("HX-Request"):
+            return ["cargo/truck_list_item.html"]
+        return ["cargo/truck_list.html"]
 
 
 class OrderListView(LoginRequiredMixin, generic.ListView):
