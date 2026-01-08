@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 
 
 class Driver(AbstractUser):
-    license_number = models.CharField(max_length=8)
+    license_number = models.CharField(max_length=8, unique=True)
     money = models.DecimalField(max_digits=10,
                                 decimal_places=2,
                                 default=0)
