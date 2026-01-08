@@ -39,8 +39,6 @@ class OrderDetailView(LoginRequiredMixin, generic.DetailView):
 
 class ServicesListView(LoginRequiredMixin, generic.ListView):
     model = Service
-    template_name = "cargo/service_list.html"
-    context_object_name = "service_list"
 
     def get_queryset(self):
         truck = self.request.user.truck
@@ -53,7 +51,6 @@ class ServiceCreateView(LoginRequiredMixin, generic.CreateView):
     model = Service
     fields = "__all__"
     success_url = reverse_lazy("cargo:service-list")
-    template_name = "cargo/create_service.html"
 
     def get_form(self, form_class=None):
         form = super().get_form(form_class)
