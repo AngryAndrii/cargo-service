@@ -1,101 +1,108 @@
 <div class="card">
-  <div class="card-body p-0">
+		<div class="card-body p-0">
 
-    <ul class="list-group list-group-flush sidebar-nav">
+				<ul class="list-group list-group-flush sidebar-nav">
 
-      {% if user.is_authenticated %}
+						{% if user.is_authenticated %}
 
-        <li class="list-group-item">
-          <strong>{{ user.get_username }}</strong><br>
-          <small class="text-muted">
-            Balance: {{ user.money }}
-          </small>
-        </li>
+								<li class="list-group-item">
+										<strong>{{ user.get_username }}</strong><br>
+										<small class="text-muted">
+												Balance: {{ user.money }}
+										</small>
+								</li>
 
-        {% if user.truck %}
-          <li class="list-group-item">
-            <div class="mb-2">
-              <strong>Your truck</strong><br>
-              {{ user.truck.manufacturer.name }}
-              {{ user.truck.model }}
-              ({{ user.truck.tonnage }})
-            </div>
+								{% if user.truck %}
+										<li class="list-group-item">
+												<div class="mb-2">
+														<strong>Your truck</strong><br>
+														{{ user.truck.manufacturer.name }}
+														{{ user.truck.model }}
+														({{ user.truck.tonnage }})
+												</div>
 
-            <button
-                hx-get="{% url 'cargo:return-truck-modal' pk=user.truck.id %}"
-                hx-target="#modals-here"
-                hx-swap="innerHTML"
-                class="btn btn-warning btn-sm w-100"
-                {% if active_order %}disabled{% endif %}
-            >
-              Return truck
-            </button>
-          </li>
-        {% else %}
-          <li class="list-group-item text-muted">
-            No truck rented
-          </li>
-        {% endif %}
+												<button
+														hx-get="{% url 'cargo:return-truck-modal' pk=user.truck.id %}"
+														hx-target="#modals-here"
+														hx-swap="innerHTML"
+														class="btn btn-warning btn-sm w-100"
+														{% if active_order %}disabled{% endif %}
+												>
+														Return truck
+												</button>
+										</li>
+								{% else %}
+										<li class="list-group-item text-muted">
+												No truck rented
+										</li>
+								{% endif %}
 
-        {% if active_order %}
-          <li class="list-group-item">
-            <strong>Active order</strong><br>
-            {{ active_order.name }}<br>
-            {{ active_order.weight }} kg
-          </li>
-        {% else %}
-          <li class="list-group-item text-muted">
-            No active orders
-          </li>
-        {% endif %}
+								{% if active_order %}
+										<li class="list-group-item">
+												<strong>Active order</strong><br>
+												{{ active_order.name }}<br>
+												{{ active_order.weight }} kg
+										</li>
+								{% else %}
+										<li class="list-group-item text-muted">
+												No active orders
+										</li>
+								{% endif %}
 
-        <li class="list-group-item">
-          <form method="post" action="{% url 'logout' %}">
-            {% csrf_token %}
-            <button type="submit"
-                    class="btn btn-outline-danger btn-sm w-100">
-              Logout
-            </button>
-          </form>
-        </li>
+								<li class="list-group-item">
+										<form method="post" action="{% url 'logout' %}">
+												{% csrf_token %}
+												<button type="submit"
+																class="btn btn-outline-danger btn-sm w-100">
+														Logout
+												</button>
+										</form>
+								</li>
 
-      {% else %}
-        <li class="list-group-item text-center">
-          <a class="btn btn-outline-primary btn-sm w-100"
-             href="{% url 'login' %}?next={{ request.path }}">
-            Login
-          </a>
-        </li>
-      {% endif %}
+						{% else %}
+								<li class="list-group-item text-center">
+										<a class="btn btn-outline-primary btn-sm w-100"
+											 href="{% url 'login' %}?next={{ request.path }}">
+												Login
+										</a>
+								</li>
+						{% endif %}
 
-      <li class="list-group-item {% if request.resolver_match.url_name == 'index' %}active{% endif %}">
-        <a href="{% url 'cargo:index' %}"
-           class="text-decoration-none {% if request.resolver_match.url_name == 'index' %}text-white{% endif %}">
-          Home
-        </a>
-      </li>
+						<li class="list-group-item {% if request.resolver_match.url_name == 'index' %}active{% endif %}">
+								<a href="{% url 'cargo:index' %}"
+									 class="text-decoration-none {% if request.resolver_match.url_name == 'index' %}text-white{% endif %}">
+										Home
+								</a>
+						</li>
 
-      <li class="list-group-item {% if request.resolver_match.url_name == 'truck-list' %}active{% endif %}">
-        <a href="{% url 'cargo:truck-list' %}"
-           class="text-decoration-none {% if request.resolver_match.url_name == 'truck-list' %}text-white{% endif %}">
-          Truck list
-        </a>
-      </li>
+						<li class="list-group-item {% if request.resolver_match.url_name == 'truck-list' %}active{% endif %}">
+								<a href="{% url 'cargo:truck-list' %}"
+									 class="text-decoration-none {% if request.resolver_match.url_name == 'truck-list' %}text-white{% endif %}">
+										Truck list
+								</a>
+						</li>
 
-      <li class="list-group-item {% if request.resolver_match.url_name == 'order-list' %}active{% endif %}">
-        <a href="{% url 'cargo:order-list' %}"
-           class="text-decoration-none {% if request.resolver_match.url_name == 'order-list' %}text-white{% endif %}">
-          Orders list
-        </a>
-      </li>
+						<li class="list-group-item {% if request.resolver_match.url_name == 'manufacturer-list' %}active{% endif %}">
+								<a href="{% url 'cargo:manufacturer-list' %}"
+									 class="text-decoration-none {% if request.resolver_match.url_name == 'manufacturer-list' %}text-white{% endif %}">
+										Manufacturer list
+								</a>
+						</li>
 
-      <li class="list-group-item {% if request.resolver_match.url_name == 'service-list' %}active{% endif %}">
-        <a href="{% url 'cargo:service-list' %}"
-           class="text-decoration-none {% if request.resolver_match.url_name == 'service-list' %}text-white{% endif %}">
-          Service list
-        </a>
-      </li>
+						<li class="list-group-item {% if request.resolver_match.url_name == 'order-list' %}active{% endif %}">
+								<a href="{% url 'cargo:order-list' %}"
+									 class="text-decoration-none {% if request.resolver_match.url_name == 'order-list' %}text-white{% endif %}">
+										Orders list
+								</a>
+						</li>
 
-    </ul>
-  </div>
+						<li class="list-group-item {% if request.resolver_match.url_name == 'service-list' %}active{% endif %}">
+								<a href="{% url 'cargo:service-list' %}"
+									 class="text-decoration-none {% if request.resolver_match.url_name == 'service-list' %}text-white{% endif %}">
+										Service list
+								</a>
+						</li>
+
+				</ul>
+		</div>
 </div>

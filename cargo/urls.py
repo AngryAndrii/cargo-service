@@ -13,12 +13,13 @@ from cargo.views import (IndexView,
                          OrderDetailView,
                          TruckListView,
                          ServiceCreateView,
-                         TruckDetailView)
+                         TruckDetailView, ManufacturerListView)
 
 urlpatterns = [
     path("", IndexView.as_view(), name="index"),
     path("trucks/", TruckListView.as_view(), name="truck-list"),
     path("orders/", OrderListView.as_view(), name="order-list"),
+    path("manufacturers/", ManufacturerListView.as_view(), name="manufacturer-list"),
     path("services/", ServicesListView.as_view(), name="service-list"),
     path("services/create/", ServiceCreateView.as_view(), name="service-create"),
     path(

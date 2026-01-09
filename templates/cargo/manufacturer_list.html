@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+		<h1 class="mb-4">Truck manufacturers</h1>
+
+		<ul id="manufacturer-list" class="list-group list-group-flush">
+				{% for manufacturer in manufacturers %}
+						<li><a href="{% url 'cargo:manufacturer-detail' pk=manufacturer.id %}"
+									 class="btn btn-sm btn-outline-primary">
+								View
+						</a></li>
+				{% endfor %}
+
+		</ul>
+{% endblock %}

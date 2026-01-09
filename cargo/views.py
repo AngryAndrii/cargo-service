@@ -8,7 +8,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from cargo.models import Truck, Order, Service
+from cargo.models import Truck, Order, Service, Manufacturer
 
 
 class IndexView(generic.TemplateView):
@@ -27,6 +27,10 @@ class TruckListView(LoginRequiredMixin, generic.ListView):
         if self.request.headers.get("HX-Request"):
             return ["cargo/truck_list_item.html"]
         return ["cargo/truck_list.html"]
+
+class ManufacturerListView(LoginRequiredMixin, generic.ListView):
+    model = Manufacturer
+    context_object_name = "manufacturers"
 
 
 class TruckDetailView(LoginRequiredMixin, generic.DetailView):
