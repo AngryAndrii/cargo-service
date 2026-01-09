@@ -32,6 +32,9 @@ class ManufacturerListView(LoginRequiredMixin, generic.ListView):
     model = Manufacturer
     context_object_name = "manufacturers"
 
+class ManufacturerDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Manufacturer
+
 
 class TruckDetailView(LoginRequiredMixin, generic.DetailView):
     model = Truck
