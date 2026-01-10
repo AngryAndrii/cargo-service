@@ -2,22 +2,37 @@
 {% load static %}
 
 {% block content %}
-		<h1 class="mb-4">Truck manufacturers</h1>
+  <h1 class="mb-4">Truck manufacturers</h1>
 
-		<ul id="manufacturer-list" class="list-group list-group-flush">
-				{% for manufacturer in manufacturers %}
-						<li><a href="{% url 'cargo:manufacturer-detail' pk=manufacturer.id %}"
-									 class="">
-								{{ manufacturer.name }}
-						</a>
-								<div>
-										<img src="{% static 'brands/' %}{{ manufacturer.image }}?{{ manufacturer.id }}"
-												 alt="{{ manufacturer.name }}"
-												 class="img-fluid rounded"
-												 style="max-height: 160px;">
-								</div>
-						</li>
-				{% endfor %}
+  <ul id="manufacturer-list" class="list-group list-group-flush">
+    {% for manufacturer in manufacturers %}
+      <li class="list-group-item p-4">
+        <div class="row g-3 align-items-start">
 
-		</ul>
+          <div class="col-md-8">
+
+            <h4>{{ manufacturer.name }}</h4>
+            <p>Country of the brand: <b>{{ manufacturer.country }}</b></p>
+            <p>number of models available for rent: {{ manufacturer.trucks.count }}</p>
+            <a href="{% url 'cargo:manufacturer-detail' pk=manufacturer.id %}"
+               class="btn btn-primary btn-sm">
+              detail
+            </a>
+
+          </div>
+
+          <div class="col-md-4 text-center">
+            <img src="{% static 'brands/' %}{{ manufacturer.image }}?{{ manufacturer.id }}"
+                 alt="{{ manufacturer.name }}"
+                 class="img-fluid rounded"
+                 style="max-height: 160px;">
+
+          </div>
+        </div>
+
+
+      </li>
+    {% endfor %}
+
+  </ul>
 {% endblock %}

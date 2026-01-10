@@ -4,6 +4,7 @@ from django import forms
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
+from django.db.models import Count
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
@@ -28,12 +29,24 @@ class TruckListView(LoginRequiredMixin, generic.ListView):
             return ["cargo/truck_list_item.html"]
         return ["cargo/truck_list.html"]
 
+
 class ManufacturerListView(LoginRequiredMixin, generic.ListView):
     model = Manufacturer
     context_object_name = "manufacturers"
 
+    def get_queryset(self):
+        return Manufacturer.objects.prefetch_related(
+            "trucks"
+        )
+
+
 class ManufacturerDetailView(LoginRequiredMixin, generic.DetailView):
     model = Manufacturer
+
+    def get_queryset(self):
+        return Manufacturer.objects.prefetch_related(
+            "trucks"
+        )
 
 
 class TruckDetailView(LoginRequiredMixin, generic.DetailView):
