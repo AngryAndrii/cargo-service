@@ -724,7 +724,7 @@
     "fields": {
         "name": "Ford",
         "country": "USA",
-        "image": null
+        "image": "ford_brand.jpg"
     }
 },
 {
@@ -733,7 +733,7 @@
     "fields": {
         "name": "Mercedes-Benz",
         "country": "Germany",
-        "image": null
+        "image": "mercedes_benz_brand.jpg"
     }
 },
 {
@@ -742,7 +742,7 @@
     "fields": {
         "name": "Volkswagen",
         "country": "Germany",
-        "image": null
+        "image": "volkswagen_brand.jpg"
     }
 },
 {
@@ -751,7 +751,7 @@
     "fields": {
         "name": "Renault",
         "country": "France",
-        "image": null
+        "image": "renault_brand.jpg"
     }
 },
 {
@@ -760,7 +760,7 @@
     "fields": {
         "name": "Fiat",
         "country": "Italy",
-        "image": null
+        "image": "fiat_brand.jpg"
     }
 },
 {
@@ -769,7 +769,7 @@
     "fields": {
         "name": "Iveco",
         "country": "Italy",
-        "image": null
+        "image": "iveco_brand.jpg"
     }
 },
 {
@@ -778,7 +778,7 @@
     "fields": {
         "name": "MAN",
         "country": "Germany",
-        "image": null
+        "image": "man_brand.jpg"
     }
 },
 {
@@ -787,7 +787,7 @@
     "fields": {
         "name": "Volvo",
         "country": "Sweden",
-        "image": null
+        "image": "volvo_brand.jpg"
     }
 },
 {
@@ -796,7 +796,7 @@
     "fields": {
         "name": "Scania",
         "country": "Sweden",
-        "image": null
+        "image": "scania_brand.jpg"
     }
 },
 {
@@ -805,7 +805,7 @@
     "fields": {
         "name": "DAF",
         "country": "Netherlands",
-        "image": null
+        "image": "daf_brand.jpg"
     }
 },
 {
