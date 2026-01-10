@@ -18,6 +18,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "debug_toolbar",
     "cargo",
+    "accounts",
     "crispy_forms",
     "crispy_bootstrap4",
 ]
@@ -91,7 +92,7 @@ INTERNAL_IPS = [
 
 AUTH_USER_MODEL = "cargo.Driver"
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = "/"
 
 MESSAGE_TAGS = {
     messages.ERROR: "danger",
