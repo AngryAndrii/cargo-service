@@ -1,22 +1,56 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-  <h1>
-    {{ truck.manufacturer }}
-  </h1>
-  <h2>
-    {{ truck.model }}
-  </h2>
+  <div class="row g-3 align-items-start mt-3">
 
-  <h3>
-    {{ truck.tonnage }}
-  </h3>
+    <div class="col-md-4">
+      <h1>
+        {{ truck.manufacturer }}
+      </h1>
+      <h2>
+        {{ truck.model }}
+      </h2>
 
-  <button hx-get="{% url 'cargo:rent-truck-modal' truck.id %}"
-          hx-target="#modals-here"
-          hx-swap="innerHTML"
-          class="btn btn-primary btn-sm">
-    Rent truck
-  </button>
+      <h3>
+        tonnage: {{ truck.tonnage }}
+      </h3>
+      <h2>
+        rent cost: <span class="text-success">{{ truck.cost_for_rent }}</span>
+      </h2>
+
+      <button hx-get="{% url 'cargo:rent-truck-modal' truck.id %}"
+              hx-target="#modals-here"
+              hx-swap="innerHTML"
+              class="btn btn-primary btn-sm">
+        Rent truck
+      </button>
+    </div>
+
+
+    <div class="col-md-4">
+      <h4>Truck condition:</h4>
+      <div class="progress">
+        <div class="progress-bar
+        {% if truck.condition < 40 %} bad
+        {% elif truck.condition < 70 %} medium
+        {% else %} good
+        {% endif %}"
+             style="width: {{ truck.condition }}%">
+        </div>
+      </div>
+      <small>{{ truck.condition }}%</small>
+    </div>
+
+
+    <div class="col-md-4 text-center">
+      <img src="{% static 'models/' %}{{ truck.image }}?{{ truck.id }}"
+           alt="{{ truck.model }}"
+           class="img-fluid rounded"
+           style="max-height: 160px;">
+    </div>
+
+  </div>
+
 
 {% endblock %}

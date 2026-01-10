@@ -64,3 +64,16 @@
     margin-bottom: 1rem;
     font-weight: 500;
 }
+
+
+.progress-bar.good {
+    background: #4caf50;
+}
+
+.progress-bar.medium {
+    background: #ffc107;
+}
+
+.progress-bar.bad {
+    background: #f44336;
+}
