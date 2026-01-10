@@ -17,6 +17,10 @@
             <p>License number: {{ driver.license_number }}</p>
 
           </div>
+          <div class="col-md-4"><a href="{% url 'accounts:driver-detail' pk=driver.id %}"
+                                   class="btn btn-primary btn-sm">
+            detail
+          </a></div>
         </div>
       </li>
     {% endfor %}

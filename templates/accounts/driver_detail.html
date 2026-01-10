@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>{{ driver.username }}</h1>
+
+  <div class="col-md-8">
+
+    <h4>{{ driver.username }}</h4>
+    <h5>balance: {{ driver.money }}</h5>
+    <h5>rented truck: {{ driver.truck }}</h5>
+    <p>License number: {{ driver.license_number }}</p>
+
+  </div>
+
+
+{% endblock %}
