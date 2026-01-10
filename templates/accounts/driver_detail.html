@@ -3,14 +3,29 @@
 {% block content %}
   <h1>{{ driver.username }}</h1>
 
-  <div class="col-md-8">
+  <div class="row g-3 align-items-start">
+    <div class="col-md-6">
 
-    <h4>{{ driver.username }}</h4>
-    <h5>balance: {{ driver.money }}</h5>
-    <h5>rented truck: {{ driver.truck }}</h5>
-    <p>License number: {{ driver.license_number }}</p>
+      <h4>{{ driver.username }}</h4>
+      <h5>balance: {{ driver.money }}</h5>
+      <h5>rented truck: {{ driver.truck }}</h5>
+      <p>License number: {{ driver.license_number }}</p>
+
+    </div>
+    <div class="col-md-6">
+    <h4>Current order:</h4>
+      {% if driver.orders.exists %}
+        {% for order in driver.orders.all %}
+          <p>{{ order.name }}</p>
+        {% endfor %}
+      {% else %}
+        <p>{{ driver.username }} doesn't have orders now</p>
+      {% endif %}
+    </div>
 
   </div>
+
+
 
 
 {% endblock %}
