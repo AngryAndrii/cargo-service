@@ -82,7 +82,14 @@
       <li class="list-group-item {% if request.resolver_match.url_name == 'truck-list' %}active{% endif %}">
         <a href="{% url 'cargo:truck-list' %}"
            class="text-decoration-none {% if request.resolver_match.url_name == 'truck-list' %}text-white{% endif %}">
-          Truck list
+          Trucks
+        </a>
+      </li>
+
+      <li class="list-group-item {% if request.resolver_match.url_name == 'driver-list' %}active{% endif %}">
+        <a href="{% url 'accounts:driver-list' %}"
+           class="text-decoration-none {% if request.resolver_match.url_name == 'driver-list' %}text-white{% endif %}">
+          Drivers
         </a>
       </li>
 
