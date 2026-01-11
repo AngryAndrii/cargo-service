@@ -7,7 +7,7 @@ class Driver(AbstractUser):
     license_number = models.CharField(max_length=8, unique=True)
     money = models.DecimalField(max_digits=10,
                                 decimal_places=2,
-                                default=0)
+                                default=1000)
     truck = models.OneToOneField("Truck",
                                  blank=True,
                                  null=True,
