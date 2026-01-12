@@ -19,10 +19,15 @@
         {% if user.truck %}
           <li class="list-group-item">
             <div class="mb-2">
-              <strong>Your truck</strong><br>
+              <a href="{% url 'cargo:truck-detail' pk=user.truck.id %}"
+                 class="text-decoration-none fw-medium fs-4">
+                <strong>Your truck:</strong><br>
+              </a>
               {{ user.truck.manufacturer.name }}
-              {{ user.truck.model }}
-              ({{ user.truck.tonnage }})
+              {{ user.truck.model }}<br>
+              <span> Tonnage: <strong>{{ user.truck.tonnage }} kg</strong></span><br>
+              <span>Plate number: <strong>{{ user.truck.plate_number }}</strong></span><br>
+              <p>Truck condition: <strong>{{ user.truck.condition }}% of 100%</strong></p>
             </div>
 
             <button
