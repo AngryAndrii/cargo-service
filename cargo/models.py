@@ -1,4 +1,5 @@
 from django.contrib.auth.models import AbstractUser
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -59,6 +60,7 @@ class Order(models.Model):
         AVAILABLE = "AV", _("Available")
         IN_PROGRESS = "IP", _("In progress")
         COMPLETED = "CO", _("Completed")
+
     name = models.CharField(max_length=65)
     weight = models.PositiveIntegerField()
     description = models.CharField(max_length=255)
@@ -82,13 +84,70 @@ class Order(models.Model):
 
 
 class Service(models.Model):
-    name = models.CharField(max_length=65)
-    description = models.TextField()
-    date = models.DateTimeField()
-    cost = models.DecimalField(max_digits=7, decimal_places=2)
-    truck = models.ForeignKey(Truck,
-                              on_delete=models.CASCADE,
-                              related_name="services")
+    SERVICE_CHOICES = [
+        ("1", "Option 1 (+1%) — 50"),
+        ("2", "Option 2 (+2%) — 100"),
+        ("3", "Option 3 (+4%) — 200"),
+        ("4", "Option 4 (+8%) — 400"),
+        ("5", "Option 5 (+10%) — 500"),
+    ]
 
-    class Meta:
-        ordering = ["-date"]
+    SERVICE_COSTS = {
+        "1": 50,
+        "2": 100,
+        "3": 200,
+        "4": 400,
+        "5": 500,
+    }
+
+    SERVICE_PERCENTS = {
+        "1": 1,
+        "2": 2,
+        "3": 4,
+        "4": 8,
+        "5": 10,
+    }
+
+    service_option = models.CharField(max_length=1, choices=SERVICE_CHOICES)
+    date = models.DateTimeField(auto_now_add=True)
+    name = models.CharField(max_length=63, )
+    description = models.TextField(max_length=255)
+    truck = models.ForeignKey(
+        "Truck",
+        on_delete=models.CASCADE,
+        related_name="services"
+    )
+
+    @property
+    def cost(self):
+        return self.SERVICE_COSTS[self.service_option]
+
+    @property
+    def repair_percent(self):
+        return self.SERVICE_PERCENTS[self.service_option]
+
+    def save(self, *args, **kwargs):
+        driver = getattr(self.truck, "driver", None)
+        if not driver:
+            raise ValidationError("Авто не орендовано, драйвер відсутній")
+
+        if driver.money < self.cost:
+            raise ValidationError("Недостатньо коштів на рахунку.")
+        if self.truck.condition >= 100:
+            raise ValidationError("Авто вже в ідеальному стані.")
+        if self.truck.condition + self.repair_percent > 100:
+            self._adjust_percent = 100 - self.truck.condition
+        else:
+            self._adjust_percent = self.repair_percent
+
+        super().full_clean()
+        super().save(*args, **kwargs)
+
+        driver.money -= self.cost
+        driver.save()
+
+        self.truck.condition = min(
+            100, self.truck.condition + getattr(self, "_adjust_percent",
+                                                self.repair_percent)
+        )
+        self.truck.save()

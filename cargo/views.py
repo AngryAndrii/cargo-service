@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views import generic
 
@@ -65,17 +66,73 @@ class ServicesListView(LoginRequiredMixin, generic.ListView):
         return truck.services.all()
 
 
+class ServiceForm(forms.ModelForm):
+    class Meta:
+        model = Service
+        fields = ["service_option", "name", "description", ]
+
+    def __init__(self, *args, **kwargs):
+        self.truck = kwargs.pop("truck")
+        self.driver = kwargs.pop(
+            "driver")
+        super().__init__(*args,
+                         **kwargs)
+
+    def clean(self):
+        cleaned_data = super().clean()
+        option = cleaned_data.get("service_option")
+        if not option:
+            return cleaned_data
+
+        cost = Service.SERVICE_COSTS[option]
+        percent = Service.SERVICE_PERCENTS[option]
+
+        driver = getattr(self.truck, "driver", None)
+        if not driver:
+            raise forms.ValidationError("У цього авто немає драйвера")
+
+        if driver.money < cost:
+            raise forms.ValidationError("Недостатньо коштів на рахунку.")
+
+        # стан авто
+        if self.truck.condition >= 100:
+            raise forms.ValidationError("Авто вже в ідеальному стані.")
+        if self.truck.condition + percent > 100:
+            cleaned_data["adjust_percent"] = 100 - self.truck.condition
+        else:
+            cleaned_data["adjust_percent"] = percent
+
+        return cleaned_data
+
+
 class ServiceCreateView(LoginRequiredMixin, generic.CreateView):
     model = Service
-    fields = "__all__"
+    form_class = ServiceForm
     success_url = reverse_lazy("cargo:service-list")
+    template_name = "cargo/service_form.html"
 
-    def get_form(self, form_class=None):
-        form = super().get_form(form_class)
-        form.fields["date"].widget = forms.DateTimeInput(
-            attrs={"type": "datetime-local"}
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs["truck"] = self.request.user.truck
+        kwargs["driver"] = self.request.user
+        return kwargs
+
+    def form_valid(self, form):
+        service = form.save(commit=False)
+        service.truck = self.request.user.truck
+
+        service._adjust_percent = form.cleaned_data.get(
+            "adjust_percent", service.repair_percent
         )
-        form.fields["truck"].queryset = Truck.objects.filter(
-            id=self.request.user.truck_id
+
+        self.request.user.money -= service.cost
+        self.request.user.save()
+
+        service.truck.condition = min(
+            100, service.truck.condition + service._adjust_percent
         )
-        return form
+        service.truck.save()
+
+        service.save()
+
+        return super().form_valid(form)
