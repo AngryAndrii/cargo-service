@@ -31,18 +31,49 @@ The project focuses on clear business logic, data consistency, and practical bac
 ## Application functionality
 
 After entering the site, we find ourselves on the login page.
-![entert](images_for_readme/1.JPG)
+![entert](images_for_readme/Enter.JPG)
 
-Log in to the sites using demo user data
-> Username: Demouser
-> 
-> Password: 1qazcde3
+Register to the site or login if you've already registered  
+***after registration you should login!***
 
-![login](images_for_readme/2.JPG)
+![login](images_for_readme/register.JPG)
+
+after that we will be on the main page
+
+![welcome](images_for_readme/welcome.JPG)
 
 After that we can go to trucks page to rent a car. 
 The list of cars is displayed in 5 pieces, and with loading via a button
-![carlist](images_for_readme/3.JPG)
+
+![trucks](images_for_readme/trucks.JPG)
+
+On the driver page we can see list of drivers
+
+![drivers](images_for_readme/drivers.JPG)
+
+you can also go to the detailed driver review page
+
+![driver](images_for_readme/driver_detail.JPG)
+
+
+
+![driver_with_order](images_for_readme/driver_detail_with_order.JPG)
+![manufacturers](images_for_readme/manufacturers.JPG)
+![manufacturer_details](images_for_readme/manufacturers_details.JPG)
+![completed](images_for_readme/order_completed.JPG)
+![order_not_avaliable](images_for_readme/order_not_avaliable.JPG)
+![orders](images_for_readme/orders.JPG)
+![rent](images_for_readme/rent_now.JPG)
+![rent_success](images_for_readme/rent_success.JPG)
+
+
+![create_service](images_for_readme/create_service.JPG)
+
+![services](images_for_readme/services(empty).JPG)
+
+![service_success](images_for_readme/service_cuccess.JPG)
+
+
 
 we can rent any car if it is not occupied by another driver, in which case we will get an error
 After that, in sidebar we can see our rented truck, and our just get smoller (with a transaction)
@@ -64,17 +95,3 @@ Now we will assume that we have completed the order, click the completed order b
 ![complete_order](images_for_readme/complete_order.JPG)
 The order goes into the completed status, and money is added to our account, this is visible in the sidebar
 ![complete_succes](images_for_readme/complete_order_succesfull.JPG)
-
-The service book page displays information about all car maintenance. Let's say you performed it at a service station, 
-and you can enter the data here using a convenient form.
-![repair](images_for_readme/repair.JPG)
-
-after confirmation, the entry is added to the list of all repairs. Money is not debited. since the work was 
-carried out separately from our platform
-![repair_complete](images_for_readme/repair_complete.JPG)
-
-Let's say we decide to return the track. To do this, click on the return button in the sidebar.
-![return_truck](images_for_readme/return_truck.jpg)
-
-Track successfully returned
-![truck_returned](images_for_readme/truck_returned.jpg)
