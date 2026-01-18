@@ -2,37 +2,56 @@
 {% load static %}
 
 {% block content %}
-  <h1 class="mb-4">Truck manufacturers</h1>
+  <div class="container py-4">
 
-  <ul id="manufacturer-list" class="list-group list-group-flush">
-    {% for manufacturer in manufacturers %}
-      <li class="list-group-item p-4">
-        <div class="row g-3 align-items-start">
+    <h1 class="mb-4 text-center fw-bold">Truck manufacturers</h1>
 
-          <div class="col-md-8">
+    <div id="manufacturer-list" class="row g-4">
 
-            <h4>{{ manufacturer.name }}</h4>
-            <p>Country of the brand: <b>{{ manufacturer.country }}</b></p>
-            <p>number of models available for rent: {{ manufacturer.trucks.count }}</p>
-            <a href="{% url 'cargo:manufacturer-detail' pk=manufacturer.id %}"
-               class="btn btn-primary btn-sm">
-              detail
-            </a>
+      {% for manufacturer in manufacturers %}
+        <div class="col-lg-6">
+          <div class="card h-100 shadow-sm border-0">
 
-          </div>
+            <div class="row g-0 h-100">
 
-          <div class="col-md-4 text-center">
-            <img src="{% static 'brands/' %}{{ manufacturer.image }}?{{ manufacturer.id }}"
-                 alt="{{ manufacturer.name }}"
-                 class="img-fluid rounded"
-                 style="max-height: 160px;">
+              <div class="col-md-8 p-4">
+                <h4 class="fw-semibold mb-2">
+                  {{ manufacturer.name }}
+                </h4>
 
+                <p class="mb-1 text-muted">
+                  Country of the brand:
+                  <span class="fw-semibold text-dark">
+                  {{ manufacturer.country }}
+                </span>
+                </p>
+
+                <p class="mb-3">
+                  Models available:
+                  <span class="badge bg-secondary">
+                  {{ manufacturer.trucks.count }}
+                </span>
+                </p>
+
+                <a href="{% url 'cargo:manufacturer-detail' pk=manufacturer.id %}"
+                   class="btn btn-outline-primary btn-sm">
+                  View details
+                </a>
+              </div>
+
+              <div class="col-md-4 d-flex align-items-center justify-content-center p-3 bg-light">
+                <img
+                    src="{% static 'brands/' %}{{ manufacturer.image }}?{{ manufacturer.id }}"
+                    alt="{{ manufacturer.name }}"
+                    class="img-fluid rounded"
+                    style="max-height: 120px;">
+              </div>
+
+            </div>
           </div>
         </div>
+      {% endfor %}
 
-
-      </li>
-    {% endfor %}
-
-  </ul>
+    </div>
+  </div>
 {% endblock %}
