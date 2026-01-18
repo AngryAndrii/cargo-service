@@ -1,6 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.core.exceptions import ValidationError
-from django.db import models
+from django.db import models, transaction
 from django.utils.translation import gettext_lazy as _
 
 
@@ -119,35 +119,37 @@ class Service(models.Model):
     )
 
     @property
-    def cost(self):
+    def cost(self) -> int:
         return self.SERVICE_COSTS[self.service_option]
 
     @property
-    def repair_percent(self):
+    def repair_percent(self) -> int:
         return self.SERVICE_PERCENTS[self.service_option]
 
-    def save(self, *args, **kwargs):
+    def apply(self):
         driver = getattr(self.truck, "driver", None)
         if not driver:
-            raise ValidationError("Авто не орендовано, драйвер відсутній")
+            raise ValidationError("Авто не орендовано, драйвер відсутній.")
 
         if driver.money < self.cost:
             raise ValidationError("Недостатньо коштів на рахунку.")
+
         if self.truck.condition >= 100:
             raise ValidationError("Авто вже в ідеальному стані.")
-        if self.truck.condition + self.repair_percent > 100:
-            self._adjust_percent = 100 - self.truck.condition
-        else:
-            self._adjust_percent = self.repair_percent
 
-        super().full_clean()
-        super().save(*args, **kwargs)
-
-        driver.money -= self.cost
-        driver.save()
-
-        self.truck.condition = min(
-            100, self.truck.condition + getattr(self, "_adjust_percent",
-                                                self.repair_percent)
+        repair = min(
+            self.repair_percent,
+            100 - self.truck.condition
         )
-        self.truck.save()
+
+        with transaction.atomic():
+            driver.money -= self.cost
+            driver.save(update_fields=["money"])
+
+            self.truck.condition += repair
+            self.truck.save(update_fields=["condition"])
+
+            self.save()
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
