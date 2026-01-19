@@ -18,6 +18,9 @@
         <div class="cta">
           <a href="{% url 'login' %}?next={{ request.path }}">Log in</a>
         </div>
+        <div class="cta mt-3">
+          <a href="{% url 'accounts:register' %}?next={{ request.path }}">Register</a>
+        </div>
       {% else %}
         <div class="cta">
           <p class="welcome">Welcome back, {{ user.username }} 👋</p>

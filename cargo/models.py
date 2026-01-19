@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 
 
 class Driver(AbstractUser):
-    license_number = models.CharField(max_length=8, unique=True)
+    license_number = models.CharField(max_length=8, unique=True, null=True, blank=True)
     money = models.DecimalField(max_digits=10,
                                 decimal_places=2,
                                 default=1000)
@@ -41,6 +41,7 @@ class Truck(models.Model):
 
     def __str__(self):
         return f"{self.manufacturer} {self.model} ({self.plate_number})"
+
 
 
 class Manufacturer(models.Model):
