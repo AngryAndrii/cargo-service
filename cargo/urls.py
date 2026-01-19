@@ -1,30 +1,35 @@
 from django.urls import path
 
-from cargo.services.helpers import (rent_truck,
-                                    take_order_modal,
-                                    take_order,
-                                    complete_order_modal,
-                                    complete_order,
-                                    return_truck_modal,
-                                    return_truck, rent_truck_modal)
-from cargo.views import (IndexView,
-                         OrderListView,
-                         ServicesListView,
-                         OrderDetailView,
-                         TruckListView,
-                         ServiceCreateView,
-                         TruckDetailView,
-                         ManufacturerListView,
-                         ManufacturerDetailView
-                         )
+from cargo.services.helpers import (
+    rent_truck,
+    take_order_modal,
+    take_order,
+    complete_order_modal,
+    complete_order,
+    return_truck_modal,
+    return_truck, rent_truck_modal
+)
+from cargo.views import (
+    IndexView,
+    OrderListView,
+    ServicesListView,
+    OrderDetailView,
+    TruckListView,
+    ServiceCreateView,
+    TruckDetailView,
+    ManufacturerListView,
+    ManufacturerDetailView
+)
 
 urlpatterns = [
     path("", IndexView.as_view(), name="index"),
     path("trucks/", TruckListView.as_view(), name="truck-list"),
     path("orders/", OrderListView.as_view(), name="order-list"),
-    path("manufacturers/", ManufacturerListView.as_view(), name="manufacturer-list"),
+    path("manufacturers/", ManufacturerListView.as_view(),
+         name="manufacturer-list"),
     path("services/", ServicesListView.as_view(), name="service-list"),
-    path("services/create/", ServiceCreateView.as_view(), name="service-create"),
+    path("services/create/", ServiceCreateView.as_view(),
+         name="service-create"),
     path(
         "manufacturers/<int:pk>/manufacturer-detail/",
         ManufacturerDetailView.as_view(),
