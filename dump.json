@@ -15,7 +15,7 @@
         "date_joined": "2025-12-18T13:29:26Z",
         "license_number": "JIM22222",
         "money": "4080.06",
-        "truck": null,
+        "truck": 5,
         "groups": [],
         "user_permissions": []
     }
@@ -36,7 +36,7 @@
         "date_joined": "2025-12-19T10:55:26Z",
         "license_number": "JRK12345",
         "money": "1500.00",
-        "truck": null,
+        "truck": 3,
         "groups": [],
         "user_permissions": []
     }
@@ -70,8 +70,8 @@
         "last_login": "2025-12-22T19:59:40.801Z",
         "is_superuser": false,
         "username": "user1",
-        "first_name": "",
-        "last_name": "",
+        "first_name": "Jim",
+        "last_name": "Bim",
         "email": "",
         "is_staff": false,
         "is_active": true,
@@ -90,7 +90,7 @@
         "password": "pbkdf2_sha256$1200000$0JqRWxBc6ytlj92mgap8Sa$+sBaAD1cHqInXevzIMF8CAggorlTnUA1VMu56N2HaPc=",
         "last_login": "2025-12-22T20:01:07.426Z",
         "is_superuser": false,
-        "username": "forel",
+        "username": "forelka",
         "first_name": "John",
         "last_name": "forel",
         "email": "",
@@ -99,48 +99,6 @@
         "date_joined": "2025-12-22T20:00:33Z",
         "license_number": "lON26231",
         "money": "152.00",
-        "truck": null,
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "cargo.driver",
-    "pk": 6,
-    "fields": {
-        "password": "pbkdf2_sha256$1200000$2hoGYwdWdmmJaiFYCLKDAE$Dwdm3lypYN2zcu+hV1Gzf4hZchoa38S4Ms2p/Aa1eG8=",
-        "last_login": null,
-        "is_superuser": false,
-        "username": "Testuser",
-        "first_name": "Testname",
-        "last_name": "Testlastname",
-        "email": "test_@mail.com",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2025-12-23T11:55:04Z",
-        "license_number": "LOU21562",
-        "money": "1560.00",
-        "truck": null,
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "cargo.driver",
-    "pk": 7,
-    "fields": {
-        "password": "pbkdf2_sha256$1200000$eqHqhT3qDMf4aRwtp74HyR$HSnb1AVyoY8XNRfvE9AH37BIT6t0JHGAE+59ttxDgjE=",
-        "last_login": null,
-        "is_superuser": false,
-        "username": "Demouser",
-        "first_name": "Demoname",
-        "last_name": "Demolastname",
-        "email": "demo@mail.com",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2025-12-23T11:56:12Z",
-        "license_number": "FRM43290",
-        "money": "5620.00",
         "truck": null,
         "groups": [],
         "user_permissions": []
@@ -181,7 +139,7 @@
         "tonnage": 1200,
         "manufacturer": 1,
         "cost_for_rent": "49.16",
-        "condition": 76,
+        "condition": 89,
         "image": "ford_transit.jpg"
     }
 },
@@ -246,7 +204,7 @@
         "tonnage": 1400,
         "manufacturer": 2,
         "cost_for_rent": "54.00",
-        "condition": 89,
+        "condition": 65,
         "image": "sprinter.jpg"
     }
 },
@@ -310,8 +268,8 @@
         "model": "Actros",
         "tonnage": 25000,
         "manufacturer": 2,
-        "cost_for_rent": "969.26",
-        "condition": 82,
+        "cost_for_rent": "725.26",
+        "condition": 62,
         "image": "mercedes_benc_actros.jpg"
     }
 },
@@ -812,14 +770,14 @@
     "model": "cargo.order",
     "pk": 7,
     "fields": {
-        "name": "Order 1",
+        "name": "electronics",
         "weight": 500,
         "description": "Transport electronics",
         "status": "AV",
         "payment": "1500.00",
         "created_at": "2025-12-22T21:45:04.381Z",
         "planned_at": "2025-12-23T08:00:00Z",
-        "finished_at": "2025-12-24T08:00:00Z",
+        "finished_at": null,
         "driver": null
     }
 },
@@ -827,24 +785,24 @@
     "model": "cargo.order",
     "pk": 8,
     "fields": {
-        "name": "Order 6",
+        "name": "big white box",
         "weight": 1200,
-        "description": "Transport furniture",
+        "description": "box, one big box",
         "status": "IP",
         "payment": "3000.00",
         "created_at": "2025-12-22T21:46:08.595Z",
         "planned_at": "2025-12-22T10:00:00Z",
-        "finished_at": "2025-12-25T13:00:00Z",
-        "driver": null
+        "finished_at": null,
+        "driver": 1
     }
 },
 {
     "model": "cargo.order",
     "pk": 9,
     "fields": {
-        "name": "Order 9",
+        "name": "kitchen utensils",
         "weight": 800,
-        "description": "Transport books",
+        "description": "kitchen utensils",
         "status": "CO",
         "payment": "1000.00",
         "created_at": "2025-12-22T21:46:22.769Z",
@@ -864,7 +822,7 @@
         "payment": "980.00",
         "created_at": "2025-12-22T21:48:48.747Z",
         "planned_at": "2025-12-23T10:00:00Z",
-        "finished_at": "2025-12-23T16:00:00Z",
+        "finished_at": null,
         "driver": null
     }
 },
@@ -879,7 +837,7 @@
         "payment": "620.00",
         "created_at": "2025-12-22T21:49:21.598Z",
         "planned_at": "2025-12-23T13:00:00Z",
-        "finished_at": "2025-12-24T08:00:00Z",
+        "finished_at": null,
         "driver": null
     }
 },
@@ -894,7 +852,7 @@
         "payment": "4000.00",
         "created_at": "2025-12-22T21:49:56.552Z",
         "planned_at": "2025-12-21T10:00:00Z",
-        "finished_at": "2025-12-25T13:00:00Z",
+        "finished_at": null,
         "driver": null
     }
 },
@@ -909,8 +867,8 @@
         "payment": "1800.00",
         "created_at": "2025-12-22T21:50:10.310Z",
         "planned_at": "2025-12-22T09:00:00Z",
-        "finished_at": "2025-12-23T12:00:00Z",
-        "driver": null
+        "finished_at": null,
+        "driver": 2
     }
 },
 {
@@ -939,7 +897,7 @@
         "payment": "950.00",
         "created_at": "2025-12-22T21:50:52.608Z",
         "planned_at": "2025-12-22T14:00:00Z",
-        "finished_at": "2025-12-23T16:00:00Z",
+        "finished_at": null,
         "driver": null
     }
 },
@@ -948,13 +906,43 @@
     "pk": 16,
     "fields": {
         "name": "Empty boxes",
-        "weight": 150,
+        "weight": 200,
         "description": "Move empty boxes, easy order",
         "status": "AV",
         "payment": "250.00",
         "created_at": "2025-12-22T21:51:39.531Z",
         "planned_at": "2025-12-22T14:00:00Z",
-        "finished_at": "2025-12-23T16:00:00Z",
+        "finished_at": null,
+        "driver": null
+    }
+},
+{
+    "model": "cargo.order",
+    "pk": 16,
+    "fields": {
+        "name": "LED TV's",
+        "weight": 150,
+        "description": "10 tv in package",
+        "status": "AV",
+        "payment": "250.00",
+        "created_at": "2025-12-22T21:51:39.531Z",
+        "planned_at": "2025-12-22T14:00:00Z",
+        "finished_at": null,
+        "driver": null
+    }
+},
+{
+    "model": "cargo.order",
+    "pk": 16,
+    "fields": {
+        "name": "metal blocks",
+        "weight": 15000,
+        "description": "wery hard metal",
+        "status": "AV",
+        "payment": "250.00",
+        "created_at": "2025-12-22T21:51:39.531Z",
+        "planned_at": "2025-12-22T14:00:00Z",
+        "finished_at": null,
         "driver": null
     }
 }

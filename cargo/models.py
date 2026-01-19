@@ -73,7 +73,7 @@ class Order(models.Model):
     payment = models.DecimalField(max_digits=7, decimal_places=2)
     created_at = models.DateTimeField(auto_now_add=True)
     planned_at = models.DateTimeField()
-    finished_at = models.DateTimeField()
+    finished_at = models.DateTimeField(null=True, blank=True)
     driver = models.ForeignKey(Driver,
                                null=True,
                                blank=True,
