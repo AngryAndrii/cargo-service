@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    {{ order.name }}
+  </h1>
+  <h2 class="mt-3">
+    weight: {{ order.weight }} kg.
+  </h2>
+  <h2 class="mt-3">
+    payment: {{ order.payment }}
+  </h2>
+  <h3 class="mt-3">{{ order.get_status_display }}</h3>
+  <p>{{ order.description }}</p>
+
+  {% if order.status == "IP" and order.driver_id == user.id %}
+    <button hx-get="{% url 'cargo:complete-order-modal' order.id %}"
+            hx-target="#modals-here"
+
+            hx-trigger="click"
+            class="btn btn-primary"> Complete the order
+    </button>
+
+  {% elif order.status == "IP" or order.status == "CO" and order.driver_id == user.id %}
+    <button
+        class="btn btn-primary" disabled> Take Order
+    </button>
+  {% else %}
+    <button hx-get="{% url 'cargo:take-order-modal' order.id %}"
+            hx-target="#modals-here"
+            hx-swap="innerHTML"
+            hx-trigger="click"
+            class="btn btn-primary"> Take Order
+    </button>
+  {% endif %}
+
+{% endblock %}

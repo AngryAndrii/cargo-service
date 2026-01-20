@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1 class="mb-4">Truck list</h1>
+
+  <ul id="truck-list" class="list-group list-group-flush">
+    {% include "cargo/truck_list_item.html" %}
+  </ul>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container py-4">
+
+    <!-- Manufacturer title -->
+    <div class="mb-4">
+      <h1 class="fw-bold">{{ manufacturer.name }}</h1>
+      <hr>
+    </div>
+
+    <h2 class="mb-3">Trucks</h2>
+
+    {% if manufacturer.trucks.exists %}
+      <div class="list-group">
+
+        {% for truck in manufacturer.trucks.all %}
+          <div class="list-group-item list-group-item-action py-3">
+
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <h5 class="mb-2">
+                  {{ truck.manufacturer.name }} {{ truck.model }}
+                </h5>
+
+                <ul class="list-unstyled mb-2">
+                  <li>
+                    <span class="text-muted">Plate number:</span>
+                    <span class="fw-semibold">{{ truck.plate_number }}</span>
+                  </li>
+                  <li>
+                    <span class="text-muted">Tonnage:</span>
+                    <span class="fw-semibold">{{ truck.tonnage }}</span>
+                  </li>
+                </ul>
+              </div>
+
+              <a href="{% url 'cargo:truck-detail' pk=truck.id %}"
+                 class="btn btn-outline-primary btn-sm align-self-start">
+                Details
+              </a>
+            </div>
+
+          </div>
+        {% endfor %}
+
+      </div>
+    {% else %}
+      <div class="alert alert-secondary mt-3">
+        No trucks for this manufacturer.
+      </div>
+    {% endif %}
+
+  </div>
+{% endblock %}

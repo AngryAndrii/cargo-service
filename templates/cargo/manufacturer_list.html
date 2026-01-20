@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <div class="container py-4">
+
+    <h1 class="mb-4 text-center fw-bold">Truck manufacturers</h1>
+
+    <div id="manufacturer-list" class="row g-4">
+
+      {% for manufacturer in manufacturers %}
+        <div class="col-lg-6">
+          <div class="card h-100 shadow-sm border-0">
+
+            <div class="row g-0 h-100">
+
+              <div class="col-md-8 p-4">
+                <h4 class="fw-semibold mb-2">
+                  {{ manufacturer.name }}
+                </h4>
+
+                <p class="mb-1 text-muted">
+                  Country of the brand:
+                  <span class="fw-semibold text-dark">
+                  {{ manufacturer.country }}
+                </span>
+                </p>
+
+                <p class="mb-3">
+                  Models available:
+                  <span class="badge bg-secondary">
+                  {{ manufacturer.trucks.count }}
+                </span>
+                </p>
+
+                <a href="{% url 'cargo:manufacturer-detail' pk=manufacturer.id %}"
+                   class="btn btn-outline-primary btn-sm">
+                  View details
+                </a>
+              </div>
+
+              <div class="col-md-4 d-flex align-items-center justify-content-center p-3 bg-light">
+                <img
+                    src="{% static 'brands/' %}{{ manufacturer.image }}?{{ manufacturer.id }}"
+                    alt="{{ manufacturer.name }}"
+                    class="img-fluid rounded"
+                    style="max-height: 120px;">
+              </div>
+
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+
+    </div>
+  </div>
+{% endblock %}

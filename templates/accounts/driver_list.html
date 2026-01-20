@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <h1 class="mb-4">Drivers</h1>
+
+  <ul id="driver-list" class="list-group list-group-flush">
+    {% for driver in driver_list %}
+      <li class="list-group-item p-4">
+        <div class="row g-3 align-items-start">
+
+          <div class="col-md-8">
+
+            <h4>{{ driver.username }}</h4>
+            <h5>balance: {{ driver.money }}</h5>
+            <h5>rented truck: {{ driver.truck }}</h5>
+            <p>License number: {{ driver.license_number }}</p>
+
+          </div>
+          <div class="col-md-4"><a href="{% url 'accounts:driver-detail' pk=driver.id %}"
+                                   class="btn btn-primary btn-sm">
+            detail
+          </a></div>
+        </div>
+      </li>
+    {% endfor %}
+
+  </ul>
+{% endblock %}

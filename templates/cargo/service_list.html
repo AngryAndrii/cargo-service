@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Services</h1>
+
+  {% if not request.user.truck %}
+    <div class="alert alert-warning">
+      Rent a truck to see its services.
+    </div>
+
+  {% else %}
+    <a href="{% url 'cargo:service-create' %}"
+       class="btn btn-primary mb-3">
+      Add service
+    </a>
+
+    {% if service_list %}
+      <ul class="list-group">
+        {% for service in service_list %}
+          <li class="list-group-item">
+            <b>{{ service.name }}</b><br>
+            {{ service.description }}<br>
+            {{ service.date }} — {{ service.cost }}
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No services yet.</p>
+    {% endif %}
+  {% endif %}
+{% endblock %}
